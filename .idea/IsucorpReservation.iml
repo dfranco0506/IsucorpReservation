@@ -6,6 +6,12 @@
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/app/Config" isTestSource="false" packagePrefix="Config\" />
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/build/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/writable/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/writable/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/writable/logs" />
+      <excludeFolder url="file://$MODULE_DIR$/writable/session" />
+      <excludeFolder url="file://$MODULE_DIR$/writable/uploads" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
