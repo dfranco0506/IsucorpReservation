@@ -1,0 +1,7 @@
+Reservation Model (Tests\Support\app\Models\ReservationModel)
+ [ ] Get reservations
+
+Health
+ [x] Is defined app path
+ [x] Base url has been set
+

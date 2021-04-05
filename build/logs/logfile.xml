@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="4" assertions="2" errors="1" warnings="1" failures="0" skipped="0" time="0.120654">
+    <testsuite name="App" tests="4" assertions="2" errors="1" warnings="1" failures="0" skipped="0" time="0.120654">
+      <testsuite name="Tests\Support\app\Models\ReservationModelTest" file="/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/_support/app/Models/ReservationModelTest.php" tests="1" assertions="0" errors="1" warnings="0" failures="0" skipped="0" time="0.108807">
+        <testcase name="testGetReservations" class="Tests\Support\app\Models\ReservationModelTest" classname="Tests.Support.app.Models.ReservationModelTest" file="/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/_support/app/Models/ReservationModelTest.php" line="10" assertions="0" time="0.108807">
+          <error type="Doctrine\Persistence\Mapping\MappingException">Tests\Support\app\Models\ReservationModelTest::testGetReservations
+Doctrine\Persistence\Mapping\MappingException: No mapping file found named 'App.Models.Entities.Reservation.dcm.yml' for class 'App\Models\Entities\Reservation'.
+
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/persistence/lib/Doctrine/Persistence/Mapping/MappingException.php:65
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/persistence/lib/Doctrine/Persistence/Mapping/Driver/DefaultFileLocator.php:110
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/persistence/lib/Doctrine/Persistence/Mapping/Driver/FileDriver.php:92
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/YamlDriver.php:73
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:148
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/persistence/lib/Doctrine/Persistence/Mapping/AbstractClassMetadataFactory.php:306
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/ClassMetadataFactory.php:80
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/persistence/lib/Doctrine/Persistence/Mapping/AbstractClassMetadataFactory.php:184
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php:293
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:1807
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:1647
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:1380
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:930
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:899
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:311
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query/Parser.php:411
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query.php:274
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/Query.php:286
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/AbstractQuery.php:1073
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/AbstractQuery.php:1027
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/vendor/doctrine/orm/lib/Doctrine/ORM/AbstractQuery.php:791
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/app/Models/ReservationModel.php:34
+/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/_support/app/Models/ReservationModelTest.php:13</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="database\ReservationDatabaseTest" file="/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/database/ReservationDatabaseTest.php" tests="1" assertions="0" errors="0" warnings="1" failures="0" skipped="0" time="0.000598">
+        <testcase name="Warning" assertions="0" time="0.000598">
+          <warning type="PHPUnit\Framework\Warning">Warning
+No tests found in class "database\ReservationDatabaseTest".</warning>
+        </testcase>
+      </testsuite>
+      <testsuite name="HealthTest" file="/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/unit/HealthTest.php" tests="2" assertions="2" errors="0" warnings="0" failures="0" skipped="0" time="0.011249">
+        <testcase name="testIsDefinedAppPath" class="HealthTest" classname="HealthTest" file="/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/unit/HealthTest.php" line="10" assertions="1" time="0.006110"/>
+        <testcase name="testBaseUrlHasBeenSet" class="HealthTest" classname="HealthTest" file="/media/rbauta/SSD_DATA/CODE/PhpstormProjects/IsucorpReservation/tests/unit/HealthTest.php" line="17" assertions="1" time="0.005139"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

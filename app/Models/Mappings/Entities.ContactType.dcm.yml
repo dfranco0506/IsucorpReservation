@@ -1,0 +1,24 @@
+Entities\ContactType:
+  type: entity
+  table: ncontacttype
+  uniqueConstraints:
+    id_index:
+      columns:
+        - id_contact_type
+  fields:
+    id_contact_type:
+      type: integer
+      unique: true
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 20
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false

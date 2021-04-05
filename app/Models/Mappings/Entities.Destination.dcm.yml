@@ -1,0 +1,39 @@
+Entities\Destination:
+  type: entity
+  table: ddestination
+  uniqueConstraints:
+    id_index:
+      columns:
+        - id_destination
+  fields:
+    id_destination:
+      type: integer
+      unique: true
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+    rating:
+      type: decimal
+      nullable: true
+    favorite:
+      type: boolean
+      nullable: false
+      default: 0
+    description:
+      type: string
+      length: 255
+      nullable: true
+    image_url:
+      type: string
+      length: 255
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false

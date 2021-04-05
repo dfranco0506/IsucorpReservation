@@ -1,0 +1,41 @@
+Entities\Reservation:
+  type: entity
+  table: dreservation
+  uniqueConstraints:
+    id_index:
+      columns:
+        - id_reservation
+  fields:
+    id_reservation:
+      type: integer
+      unique: true
+      id: true
+      generator:
+        strategy: AUTO
+    description:
+      type: text
+      nullable: true
+    date:
+      type: date
+      nullable: true
+    time:
+      type: time
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+  manyToOne:
+    contact:
+      targetEntity: Contact
+      joinColumns:
+        contact:
+          referencedColumnName: id_contact
+    destination:
+      targetEntity: Destination
+      inversedBy: reservations
+      joinColumn:
+        name: id_destination
+        referencedColumnName: id_destination

@@ -1,0 +1,38 @@
+Entities\Contact:
+  type: entity
+  table: dcontact
+  uniqueConstraints:
+    id_index:
+      columns:
+        - id_contact
+  fields:
+    id_contact:
+      type: integer
+      unique: true
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+    phone_number:
+      type: string
+      length: 255
+      nullable: true
+    birth_date:
+      type: datetime
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+  manyToOne:
+    contact_type:
+      targetEntity: ContactType
+      inversedBy: contacts
+      joinColumn:
+        name: id_contact_type
+        referencedColumnName: id_contact_type

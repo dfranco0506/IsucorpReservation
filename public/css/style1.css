@@ -1,0 +1,237 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+/*---------------------------------header-------------------------*/
+header {
+	background-image: url('../img/banner.png');
+	/*position: fixed;*/
+	background-size: cover;
+	background-position: center;
+
+}
+
+/*---------------------------------banner-------------------------*/
+#banner {
+	margin-top: -30px;
+	background-color: #f8f8f8;
+	height: 80px;
+}
+
+#banner .container {
+
+	position: static;
+	margin: 0 auto;
+	padding-top: 1%;
+}
+
+
+#banner button {
+	background-color: gray;
+	color: white;
+	font-size: 12px;
+	align-content: center;
+	width: max-content;
+}
+
+#banner label {
+	color: #bf1110;
+	font-size: 20px;
+	align-content: center;
+}
+
+#banner p {
+	font-size: 11px;
+	align-content: center;
+	alignment: left;
+	margin-right: -10px;
+}
+
+/*---------------------------------body----------------------------*/
+body {
+	background-color: #efefef;
+}
+
+body .container {
+	background-color: #f8f8f8;
+	max-width: 70%;
+	margin: 30px auto;
+}
+
+/*------------------------------data table---------------------------*/
+.table {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.table td, .table th {
+	padding: .75rem;
+	border-top: 10px solid #dee2e6;
+	border-color: #f8f8f8;
+	font-size: 12px;
+	height: border-box;
+	alignment: center;
+}
+
+.hidden-favorites {
+	text-align: right;
+}
+
+
+.td-internal-image {
+	margin-left: -15px;
+}
+
+.table-responsive {
+	display: table;
+}
+
+.table td button, .table th button {
+	background-color: gray;
+	color: white;
+	font-size: 12px;
+	align-content: center;
+	width: max-content;
+	float: right;
+}
+
+/*-------------------------------inputs--------------------------------*/
+.input-icons i {
+	position: absolute;
+}
+
+.input-icons {
+	width: 100%;
+	/*margin-bottom: 10px;*/
+}
+
+.icon {
+	margin-top: 8px;
+	padding: 7px;
+	min-width: 100px;
+	color: #d6d8db;
+
+}
+
+input {
+	width: 50%;
+	height: 5%;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #d6d8db;
+	margin-top: 2%;
+	margin-bottom: 4%;
+	font-size: 12px;
+}
+
+select {
+	width: 50%;
+	height: 5%;
+	padding-left: 7%;
+	text-align: center;
+	background-color:#fff ;
+	border: 1px solid #d6d8db;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPSdibGFjaycgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyB3aWR0aD0nMjQnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTcgMTBsNSA1IDUtNXonLz48cGF0aCBkPSdNMCAwaDI0djI0SDB6JyBmaWxsPSdub25lJy8+PC9zdmc+);
+	background-repeat: no-repeat;
+	background-position-x: 100%;
+	background-position-y: 5px;
+	font-size: 12px;
+	outline: none;
+}
+select::-ms-expand {
+	display: none;
+}
+
+/*-------------------------------other devices-------------------------*/
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.table {
+		padding: 20px;
+	}
+
+	.hidden-favorites {
+		text-align: right;
+	}
+	.hidden-text {
+		display: none;
+	}
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+	.table {
+		padding: 20px;
+	}
+
+	.hidden-favorites {
+		text-align: right;
+	}
+
+	.hidden-text {
+		display: none;
+	}
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+	.table {
+		padding: 10px;
+	}
+
+	.hidden-favorites, .hidden-text {
+		display: none;
+	}
+
+
+	#banner button {
+		background-color: gray;
+		color: white;
+		font-size: 12px;
+		align-content: center;
+		width: max-content;
+		margin-top: 15%;
+	}
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+	.table {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.table td, .table th {
+		padding: .75rem;
+		border-top: 10px solid #dee2e6;
+		border-color: #f8f8f8;
+		font-size: 12px;
+		height: border-box;
+		alignment: center;
+	}
+
+	.hidden-favorites, .hidden-text {
+		display: none;
+	}
+
+	body .container {
+		background-color: #f8f8f8;
+		max-width: 100%;
+		margin: auto;
+		padding-left: 15px;
+	}
+
+
+	#banner button {
+		background-color: gray;
+		color: white;
+		font-size: 12px;
+		align-content: center;
+		width: max-content;
+	}
+
+}
+
+
