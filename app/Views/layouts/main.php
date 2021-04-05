@@ -53,7 +53,7 @@
 
     <div class="row" style="float: right; padding: 50px 27%">
         <div class="navbar-tool dropdown" style="float: right">
-            <a class="topbar-link" data-to  ggle="dropdown" aria-expanded="false">
+            <a class="topbar-link" data-to  data-toggle="dropdown" aria-expanded="false">
                 <img width="20" src="/img/<?= session('locale')=='en'?'en':'es'?>.jpg" />
                 <span style="color: #fff3cd; font-size: 14px"><?php echo lang('App.select_language');?></span>
             </a>

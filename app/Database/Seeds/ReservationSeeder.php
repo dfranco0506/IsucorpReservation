@@ -12,9 +12,11 @@ class ReservationSeeder extends \CodeIgniter\Database\Seeder
 
         for ($i = 0; $i < 5; $i++) {
             $data = [
-                'contact'        => rand(1,150),
-                'destination'        => rand(1,6),
+                'contact'        => rand(1,20),
+                'id_destination'        => rand(1,6),
                 'description'        => $faker->text,
+                'date'  => Time::createFromTimestamp($faker->unixTime()),
+                'time'  => $faker->dateTimeBetween('-2 month', '-1 days')->format('H:i:s'),
                 'created_at'  => Time::createFromTimestamp($faker->unixTime()),
                 'updated_at'  => Time::now()
             ];

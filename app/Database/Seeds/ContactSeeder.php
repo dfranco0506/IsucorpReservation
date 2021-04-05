@@ -12,7 +12,7 @@ class ContactSeeder extends \CodeIgniter\Database\Seeder
 
         for ($i = 0; $i < 20; $i++) {
             $data = [
-                'contact_type'        => rand(1,3),
+                'id_contact_type'        => rand(1,3),
                 'name'        => $faker->name,
                 'phone_number'     => $faker->phoneNumber,
                 'birth_date'  => Time::createFromTimestamp($faker->unixTime()),
