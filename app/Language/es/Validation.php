@@ -44,7 +44,7 @@ return array(
 	'not_equals'            => 'El campo {field} no puede ser: {param}.',
 	'numeric'               => 'El campo {field} debe contener solo números.',
 	'regex_match'           => 'El campo {field} no está en el formato correcto.',
-	'required'              => 'El campo {field} es obligatorio.',
+	'required'              => 'El campo {field} es requerido.',
 	'required_with'         => 'El campo {field} es obligatorio cuando {param} está presente.',
 	'required_without'      => 'El campo {field} es obligatorio cuando {param} no está presente.',
 	'timezone'              => 'El campo {field} debe ser una zona horaria válida.',
@@ -53,8 +53,9 @@ return array(
 	'valid_emails'          => 'El campo {field} debe contener todas las direcciones de email válidas.',
 	'valid_ip'              => 'El campo {field} debe contener una IP válida.',
 	'valid_url'             => 'El campo {field} debe contener una URL válida.',
-	'valid_date'            => 'El campo {field} debe contener una fecha válida.',
-
+	'valid_date'            => 'El campo {field} debe contener una fecha válida',
+	'format_date'            => 'El campo {field} debe contener una fecha válida, en el formato d/m/aaaa',
+    'phone_valid_format'    => 'El campo {field} debe contener numeros y guiones, en el formato 00-0000-0000',
 	// Credit Cards
 	'valid_cc_num' => '{field} no parece ser un número de tarjeta de crédito válida.',
 

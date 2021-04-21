@@ -28,7 +28,7 @@
                'user'          => 'isucorp',
                'password'      => '123456',
                'host'          => 'localhost',
-               'dbname'        => 'db_isucorp_reserva',
+               'dbname'        => 'db_isucorp_reservation',
                'charset'       => 'utf8',
                'driverOptions' => array(
                    'charset'   => 'utf8',

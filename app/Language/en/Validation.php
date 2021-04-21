@@ -53,7 +53,10 @@ return [
     'valid_emails' => 'The field {field} must contain all valid email addresses.',
     'valid_ip' => 'The field {field} must contain a valid IP.',
     'valid_url' => 'The field {field} must contain a valid URL.',
-    'valid_date' => 'The field {field} must contain a valid date.',
+    'valid_date' => 'The field {field} must contain a valid date',
+    'format_date' => 'The field {field} must contain a valid date, with the format d/m/yyyy',
+    'phone_valid_format'    => 'The field {field} must contain numbers and dash with the format 00-0000-0000',
+
 
 // Credit Cards
     'valid_cc_num' => '{field} does not appear to be a valid credit card number.',
