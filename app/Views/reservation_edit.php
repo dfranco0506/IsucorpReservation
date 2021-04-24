@@ -27,16 +27,13 @@
             <?php
         }
         ?>
-		<form method="post" action="<?=site_url('/reservation/update/'.$reservations->getIdReservation())?>">
+		<form method="post" name="reservation_form" action="<?=site_url('/reservation/update/'.$reservations->getIdReservation())?>">
 			<div class="row" style="background-color: white;margin-bottom: 10px">
 				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-					<label>
 						<input type="text" disabled placeholder="<?php echo lang('Form.contact_name');?>" name="contact_name" required value="<?= old('name',$reservations->getContact()->getName()) ?>">
-					</label>
 					<i class="fa fa-user fa-2x"></i>
 				</div>
 				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-					<label for="contact_type"></label>
                     <select id="contact_type" name="contact_type" required disabled>
 						<option><?php echo lang('Validation.contact_type');?></option>
 						<?php
@@ -48,21 +45,17 @@
 					<i class="fa fa-sort-amount-desc select-icon"></i>
 				</div>
 				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-					<label>
 						<input type="text" placeholder="<?php echo lang('Validation.contact_phone');?>" name="contact_phone" required disabled value="<?= old('name',$reservations->getContact()->getPhoneNumber()) ?>">
-					</label>
 					<i class="fa fa-phone fa-2x"></i>
 				</div>
 				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-					<label>
 						<input type="text" id="contact_birthday" disabled placeholder="<?php echo lang('Validation.contact_birthday');?>" name="contact_birthday" required value="<?= old('birth_date',$birthday) ?>">
-					</label>
 					<i class="fa fa-calendar fa-2x"></i>
 				</div>
 			</div>
 			<div class="row" style="background-color: white;margin-bottom: 10px">
 				<div class="col-lg-6 col-sm-6 col-md-6 fontuser">
-					<label for="destination"></label><select id="destination" name="destination" required>
+					<select id="destination" name="destination" required>
 						<option value="0"><?php echo lang('Validation.destination');?></option>
 						<?php
 							foreach ($destinations as $destination) {
@@ -73,21 +66,17 @@
 					<i class="fa fa-sort-amount-desc select-icon"></i>
 				</div>
 				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-					<label>
 						<input type="text" id="reservation_date" placeholder="<?php echo lang('Validation.reservation_date');?>" name="reservation_date" value="<?= old('reservation_date',$reservation_date) ?>">
-					</label>
 					<i class="fa fa-calendar fa-2x"></i>
 				</div>
 				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-					<label>
 						<input class="timepicker" type="text" placeholder="<?php echo lang('Validation.reservation_time');?>" name="reservation_time" id="reservation_time" required value="<?= old('reservation_time',$reservation_time) ?>">
-					</label>
 					<i class="fa fa-calendar fa-2x"></i>
 				</div>
 			</div>
 			<div class="row" style="background-color: white;margin-bottom: 10px">
 				<div class="col-12">
-					<label for="text_editor"></label><textarea id="text_editor" name="text_editor" <?= old('name',$reservations->getDescription()) ?>></textarea>
+					<textarea name="text_editor" <?= old('name',$reservations->getDescription()) ?>></textarea>
 				</div>
 			</div>
 			<script type="text/javascript">
@@ -110,10 +99,13 @@
             $('input.timepicker').timepicker({});
         });
         $(function () {
-            $("#contact_birthday").datepicker();
-        });
-        $(function () {
-            $("#reservation_date").datepicker();
+            $("#reservation_date").datepicker({
+                dateFormat:'dd/mm/yy',
+                changeYear: true,
+                changeMonth: true,
+                minDate: new Date(),
+                maxDate: '+2Y'
+            });
         });
 
         $('.timepicker').timepicker({

@@ -187,7 +187,9 @@ table.dataTable.no-footer {
 #table_id_length, #table_id_filter, #table_id_info {
     display: none;
 }
-
+.table-sort-by{
+    margin-left: 14px;
+}
 /*--------------------------------components---------------------------*/
 .input-icons i {
     position: absolute;
@@ -217,7 +219,7 @@ input[type=text], input[type=password], input[type=number] {
 }
 
 input:focus{
-    outline: 1px solid #d6d8db;
+    outline: none;
     background-color: #fff;
 }
 
@@ -226,8 +228,8 @@ input::-webkit-inner-spin-button {
 }
 
 select {
-    height: 40px;
-    padding-left: 30px;
+    height: 39px;
+    padding-left: 35px;
     text-align: left;
     background-color: #fff;
     border: 1px solid #d6d8db;
@@ -239,15 +241,19 @@ select {
     background-position-y: 5px;
     font-size: 12px;
     outline: none;
-    margin-bottom: 4%;
     color: darkgrey;
+    margin-top: 5px !important;
 }
 select option{
     color: black;
 }
 
+select[disabled]{
+    background-color: #FAFAFA;
+    color: #202428;
+}
 .select-icon{
-    margin-left: -2%;
+    /*margin-left: -2%;*/
 }
 
 .form-button {
@@ -308,7 +314,7 @@ select, select .input-search::-ms-expand {
     }
 
     .hidden-favorites {
-        text-align: right;
+        float: left;
     }
 
     .hidden-text {
@@ -328,9 +334,6 @@ select, select .input-search::-ms-expand {
     .table-responsive {
         display: block;
     }
-    .hidden-favorites {
-        text-align: right;
-    }
 
     .hidden-text {
         display: none;
@@ -339,12 +342,34 @@ select, select .input-search::-ms-expand {
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
-    .table {
-        padding: 10px;
+    body .container {
+        background-color: #f8f8f8;
+        max-width: 72%;
+        margin: 30px auto;
     }
-
+    .table {
+        padding-left: 0;
+        padding-right: 0;
+    }
     .table-responsive {
         display: block;
+    }
+
+    .table td, .table th {
+        padding: .75rem;
+        border-top: 10px solid #dee2e6;
+        border-color: #f8f8f8;
+        font-size: 12px;
+        height: border-box;
+        alignment: center;
+    }
+
+    .table td button, .table th button{
+        margin-top: 7px;
+    }
+
+    .favorite {
+        margin-top: 12px;
     }
 
     .hidden-favorites, .hidden-text {
@@ -358,6 +383,25 @@ select, select .input-search::-ms-expand {
         font-size: 12px;
         align-content: center;
         width: max-content;
+    }
+
+    input[type=text], input[type=password], input[type=number] {
+        margin-bottom: 2%;
+        padding: 10px 35px;
+    }
+
+    select {
+        margin-bottom: 7px !important;
+    }
+    .fontuser i {
+        left: 4%;
+        top: 27%;
+    }
+    .form-button {
+        background-color: #bc0001;
+        color: white;
+        width: 100%;
+        margin-left: 2%;
     }
 }
 
@@ -380,10 +424,6 @@ select, select .input-search::-ms-expand {
         alignment: center;
     }
 
-    .hidden-favorites, .hidden-text {
-        display: none;
-    }
-
     body .full-container {
 
         background-color: #f8f8f8;
@@ -404,7 +444,7 @@ select, select .input-search::-ms-expand {
 
     body .form-container {
         background-color: #f8f8f8;
-        max-width: 100%;
+        max-width: 70%;
         margin: 30px auto;
     }
 
@@ -437,40 +477,6 @@ select, select .input-search::-ms-expand {
         width: max-content;
     }
 
-    .fontuser i {
-        position: absolute;
-        left: 5%;
-        top: 20%;
-    }
-
-    input[type=text],
-    input[type=password],
-    input[type=number] {
-        padding: 14px 40px;
-        text-align: left;
-        border: 1px solid #d6d8db;
-        margin-top: 2%;
-        margin-bottom: 4%;
-        font-size: 14px;
-        width: 104%;
-    }
-    input[type=text]:focus,
-    input[type=text]:active,
-    input[type=password]:focus,
-    input[type=password]:active,
-    input[type=number]:focus
-    input[type=number]:active
-    {
-        padding: 14px 40px;
-        text-align: left;
-        border: 1px solid #d6d8db;
-        margin-top: 2%;
-        margin-bottom: 4%;
-        font-size: 14px;
-        width: 104%;
-    }
-
-
     .input-icons i {
         position: absolute;
         left: 15px;
@@ -478,9 +484,9 @@ select, select .input-search::-ms-expand {
         font-weight: bold;
     }
 
-    .table-sort-by {
-        height: 5%;
-        font-weight: bold;
+    .fontuser select {
+        height: 39px;
+        width: 100%;
     }
     .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
          cursor: default;

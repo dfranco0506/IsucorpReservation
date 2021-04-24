@@ -31,8 +31,8 @@ class ReservationController extends BaseController
     public function index()
     {
         helper(['form', 'url']);
-
-        return view('reservation_list');
+        $data['validation'] = \Config\Services::validation();
+        return view('reservation_list',$data);
     }
 
     public function sortByDataTable()
@@ -51,8 +51,7 @@ class ReservationController extends BaseController
                 $nestedData['id_reservation'] = $reservation->getIdReservation();
                 $nestedData['image_url'] = '<img class="td-internal-image" src="' . base_url() . '/' . $reservation->getDestination()->getImageUrl() . '" height="50" width="50"/' . '>';
                 $nestedData['name'] = '<b>' . $reservation->getDestination()->getName() . '</b><br>' . date('j M Y h:i a', strtotime($reservation->getDate()->format('Y-m-d')));
-                $nestedData['rating'] = '<b>' . 'Raiting' . '</b><br>' . $this->starRating($reservation->getDestination()->getRating());
-                $nestedData['addfavorites'] = 'Add Favorites';
+                $nestedData['rating'] = '<span class="hidden-favorites"><b>' . 'Raiting' . '</b></span><br>' . $this->starRating($reservation->getDestination()->getRating());
                 $nestedData['favorite'] = $reservation->getDestination()->getFavorite();
                 $edit_function = 'editItem(' . $reservation->getIdReservation() . ')';
                 $html = '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" class="btn rounded-0">EDIT</button></div>';
@@ -101,7 +100,6 @@ class ReservationController extends BaseController
         $data['contact_types'] = $this->contact_type_model->getAllContactTypes();
         $data['destinations'] = $this->destination_model->getAllDestinations();
         $data['validation'] = \Config\Services::validation();
-//        echo '<pre>';print_r($data['validation']);
         return view('reservation_create', $data);
     }
 
@@ -109,54 +107,55 @@ class ReservationController extends BaseController
     {
         $postData = $this->request->getPost();
         $validation = [
-        'contact_name' => [
-            'label' => 'Validation.contact_name',
-            'rules' => 'required|min_length[3]',
-            'errors' => [
-                'required' => 'Validation.contact_name.required'
-            ]
-        ],
-        'contact_type' => [
-            'label' => 'Validation.contact_type',
-            'rules' => 'required|numeric',
-            'errors' => [
-                'required' => 'Validation.contact_type.required',
-                'numeric'=>'Validation.contact_phone.required'
-            ]
-        ],
-        'contact_phone' => [
-            'label' => 'Validation.contact_phone',
-            'rules' => 'required|regex_match[^\d{2}[\s\.-]?\d{4}[\s\.-]?\d{4}$]',
-            'errors' => [
-                'required' => 'Validation.contact_phone.required',
-                'regex_match'=>'Validation.contact_phone.phone_valid_format'
-            ]
-        ],
-        'contact_birthday' => [
-            'label' => 'Validation.contact_birthday',
-            'rules' => 'required|valid_date[d/m/Y]|valid_birthday_date',
-            'errors' => [
-                'required' => 'Validation.contact_birthday.required',
-                'valid_birthday_date'=>'Validation.contact_birthday.valid_birthday_date'
-            ]
-        ],
-        'reservation_date' => [
-            'label' => 'Validation.reservation_date',
-            'rules' => 'required|valid_date[d/m/Y]|valid_reservation_date',
-            'errors' => [
-                'required' => 'Validation.reservation_date.required',
-                'valid_reservation_date'=>'Validation.reservation_date.valid_reservation_date'
-            ]
-        ],
-        'reservation_time' => [
-            'label' => 'Validation.reservation_time',
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Validation.reservation_time.required',
-            ]
-        ],
-    ];
-        if ($this->validate($validation)){
+            'contact_name' => [
+                'label' => 'Validation.contact_name',
+                'rules' => 'required|min_length[3]',
+                'errors' => [
+                    'required' => 'Validation.contact_name.required'
+                ]
+            ],
+            'contact_type' => [
+                'label' => 'Validation.contact_type',
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Validation.contact_type.required',
+                    'numeric' => 'Validation.contact_phone.required'
+                ]
+            ],
+            'contact_phone' => [
+                'label' => 'Validation.contact_phone',
+                'rules' => 'required|regex_match[^\d{2}[\s\.-]?\d{4}[\s\.-]?\d{4}$]',
+                'errors' => [
+                    'required' => 'Validation.contact_phone.required',
+                    'regex_match' => 'Validation.contact_phone.phone_valid_format'
+                ]
+            ],
+            'contact_birthday' => [
+                'label' => 'Validation.contact_birthday',
+                'rules' => 'required|valid_date[d/m/Y]|valid_birthday_date',
+                'errors' => [
+                    'required' => 'Validation.contact_birthday.required',
+                    'valid_birthday_date' => 'Validation.contact_birthday.valid_birthday_date'
+                ]
+            ],
+            'reservation_date' => [
+                'label' => 'Validation.reservation_date',
+                'rules' => 'required|valid_date[d/m/Y]|valid_reservation_date',
+                'errors' => [
+                    'required' => 'Validation.reservation_date.required',
+                    'valid_reservation_date' => 'Validation.reservation_date.valid_reservation_date'
+                ]
+            ],
+            'reservation_time' => [
+                'label' => 'Validation.reservation_time',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Validation.reservation_time.required',
+                ]
+            ],
+        ];
+        if ($this->validate($validation)) {
+
             $contact_data = [
                 "contact_name" => $postData['contact_name'],
                 "contact_type" => $postData['contact_type'],
@@ -173,26 +172,20 @@ class ReservationController extends BaseController
             $reservation_data = [
                 "contact" => $id_contact,
                 "destination" => $postData['destination'],
-                "reservation_date" =>$postData['reservation_date'],
-                "reservation_time" =>$postData['reservation_time'],
+                "reservation_date" => $postData['reservation_date'],
+                "reservation_time" => $postData['reservation_time'],
                 "description" => $postData['text_editor']
             ];
 
             try {
                 $this->reservation_model->addReservation($reservation_data);
-                session()->setFlashdata('message', lang('Validation.success_create'));
+                session()->setFlashdata('success', lang('Validation.success_create'));
             } catch (Exception $e) {
-                session()->setFlashdata('message', throwException($e->getMessage()));
+                session()->setFlashdata('error', throwException($e->getMessage()));
             }
             return redirect()->to(base_url('/'));
         }
-//        if ($validation->withRequest($this->request)->run() == false) {
-//            session()->setFlashdata('message', $this->validator);
-//
-            return redirect()->route('reservation/create')->withInput();
-//        } else {
-//
-//        }
+        return redirect()->route('reservation/create')->withInput();
     }
 
     public function edit($id)
@@ -215,10 +208,8 @@ class ReservationController extends BaseController
     {
         helper(['form', 'url']);
         $postData = $this->request->getPost();
-        $validation = \Config\Services::validation();
-//        $session = \Config\Services::session();
 
-        $validation->setRules([
+        $validation = [
             'reservation_date' => [
                 'label' => 'Validation.reservation_date',
                 'rules' => 'required',
@@ -233,28 +224,28 @@ class ReservationController extends BaseController
                     'required' => 'Validation.reservation_time.required',
                 ]
             ],
-        ]);
+        ];
 
-        if ($validation->withRequest($this->request)->run() == false) {
-            session()->setFlashdata('message', $this->validator);
-
-            return redirect()->route('contact/create')->withInput()->with('validation', $this->validator);
-        } else {
+        if ($this->validate($validation)) {
             $reservation_data = [
                 "destination" => $postData['destination'],
-                "reservation_date" =>$postData['reservation_date'],
-                "reservation_time" =>$postData['reservation_time'],
+                "reservation_date" => $postData['reservation_date'],
+                "reservation_time" => $postData['reservation_time'],
                 "description" => $postData['text_editor']
             ];
 
             try {
                 $this->reservation_model->updateReservation($reservation_data, $id);
-                session()->setFlashdata('message', lang('Validation.success_updatee'));
+                session()->setFlashdata('success', lang('Validation.success_update'));
+                return redirect()->to(base_url('/'));
             } catch (Exception $e) {
-                session()->setFlashdata('message', throwException($e->getMessage()));
+                session()->setFlashdata('error', throwException($e->getMessage()));
             }
-            return redirect()->to(base_url('/'));
+
         }
+        return redirect()->route('contact/edit')->withInput();
+
+
     }
 
 }

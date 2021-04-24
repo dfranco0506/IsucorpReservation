@@ -22,11 +22,11 @@
     </section>
     <div class="form-container">
         <?= $validation->listErrors('my_list') ?>
-        <form method="post" action="<?= base_url() ?>/reservation/store">
+        <form name="reservation_form" method="post" action="<?= base_url() ?>/reservation/store">
             <div class="row" style="background-color: white;margin-bottom: 10px">
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <input type="text" placeholder="<?php echo lang('Validation.contact_name'); ?>"
-                           name="contact_name" required>
+                    <input type="text" autofocus="autofocus" placeholder="<?php echo lang('Validation.contact_name'); ?>"
+                           name="contact_name" formnovalidate>
                     <i class="fa fa-user fa-2x"></i>
                 </div>
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
                     <input type="text" autocomplete="off" placeholder="<?php echo lang('Validation.contact_phone'); ?> (00-0000-0000)"
-                           name="contact_phone" id="contact_phone" maxlength="10" class="input-number" required>
+                           name="contact_phone" id="contact_phone" maxlength="12" required>
                     <i class="fa fa-phone fa-2x"></i>
                 </div>
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
@@ -74,12 +74,12 @@
                     <input class="timepicker" type="text" autocomplete="off"
                            placeholder="<?php echo lang('Validation.reservation_time'); ?>" name="reservation_time"
                            id="reservation_time" required>
-                    <i class="fa fa-calendar fa-2x"></i>
+                    <i class="fa fa-clock fa-2x"></i>
                 </div>
             </div>
             <div class="row" style="background-color: white;margin-bottom: 10px">
                 <div class="col-12">
-                    <label for="text_editor"></label><textarea id="text_editor" name="text_editor"></textarea>
+                   <textarea name="text_editor"></textarea>
                 </div>
             </div>
             <script type="text/javascript">
@@ -121,13 +121,7 @@
             });
         });
 
-        // $('#contact_phone').on('input', function (e) {
-        //     if (!/^[ a-z0-9áéíóúüñ]*$/i.test(this.value)) {
-        //         this.value = this.value.replace(/[^ a-z0-9áéíóúüñ]+/ig,"");
-        //     }
-        // });
-
-        $('.input-number').on('input', function () {
+        $('#contact_phone').on('input', function () {
             this.value = this.value.replace(/[^\d-]/,'');
         });
 
