@@ -17,6 +17,7 @@ class ReservationSeeder extends \CodeIgniter\Database\Seeder
                 'description'        => $faker->text,
                 'date'  => Time::createFromTimestamp($faker->unixTime()),
                 'time'  => $faker->dateTimeBetween('-2 month', '-1 days')->format('H:i:s'),
+                'favorite'        => $faker->boolean,
                 'created_at'  => Time::createFromTimestamp($faker->unixTime()),
                 'updated_at'  => Time::now()
             ];

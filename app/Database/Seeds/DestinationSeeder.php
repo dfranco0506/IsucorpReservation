@@ -12,7 +12,6 @@ class DestinationSeeder extends \CodeIgniter\Database\Seeder
             [
                 'name'        => 'Second Dog',
                 'rating'        => 4.5,
-                'favorite'        => true,
                 'image_url'        => 'img/banner.jpg',
                 'description'        => 'Second Dog',
                 'created_at'  => Time::now(),
@@ -21,7 +20,6 @@ class DestinationSeeder extends \CodeIgniter\Database\Seeder
             [
                 'name'        => 'Primer Puerto',
                 'rating'        => 5,
-                'favorite'        => true,
                 'image_url'        => 'img/primer_puerto.jpeg',
                 'description'        => 'Primer Puerto',
                 'created_at'  => Time::now(),
@@ -30,7 +28,6 @@ class DestinationSeeder extends \CodeIgniter\Database\Seeder
             [
                 'name'        => 'Stella',
                 'rating'        => 2,
-                'favorite'        => false,
                 'image_url'        => 'img/stella.jpeg',
                 'description'        => 'Stella',
                 'created_at'  => Time::now(),
@@ -39,7 +36,6 @@ class DestinationSeeder extends \CodeIgniter\Database\Seeder
             [
                 'name'        => 'Island Creek',
                 'rating'        => 3.5,
-                'favorite'        => false,
                 'image_url'        => 'img/blog1.jpg',
                 'description'        => 'Island Creek',
                 'created_at'  => Time::now(),
@@ -48,7 +44,6 @@ class DestinationSeeder extends \CodeIgniter\Database\Seeder
             [
                 'name'        => 'Fogo the Chao',
                 'rating'        => 4,
-                'favorite'        => true,
                 'image_url'        => 'img/blog2.jpg',
                 'description'        => 'Fogo the Chao',
                 'created_at'  => Time::now(),
@@ -57,7 +52,6 @@ class DestinationSeeder extends \CodeIgniter\Database\Seeder
             [
                 'name'        => 'Fontana',
                 'rating'        => 5,
-                'favorite'        => true,
                 'image_url'        => 'img/blog3.jpg',
                 'description'        => 'Fontana',
                 'created_at'  => Time::now(),

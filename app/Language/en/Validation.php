@@ -86,6 +86,8 @@ return [
 
     //messages
     'success_create'=>'Item created successfully.',
+    'success_add_favorite'=>'Reservation added as favorite.',
+    'success_remove_favorite'=>'Reservation removed as favorite.',
     'success_update'=>'Item updated successfully.',
     'success_delete'=>'Item deleted successfully.',
 ];

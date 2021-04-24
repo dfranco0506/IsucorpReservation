@@ -21,6 +21,10 @@ Entities\Reservation:
     time:
       type: time
       nullable: true
+    favorite:
+      type: boolean
+      nullable: false
+      default: 0
     created_at:
       type: datetime
       nullable: false

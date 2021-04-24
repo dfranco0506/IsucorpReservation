@@ -212,4 +212,33 @@
 		public function getDestination() {
 			return $this->destination;
 		}
-	}
+	    /**
+     * @var bool
+     */
+    private $favorite;
+
+
+    /**
+     * Set favorite.
+     *
+     * @param bool $favorite
+     *
+     * @return Reservation
+     */
+    public function setFavorite($favorite)
+    {
+        $this->favorite = $favorite;
+
+        return $this;
+    }
+
+    /**
+     * Get favorite.
+     *
+     * @return bool
+     */
+    public function getFavorite()
+    {
+        return $this->favorite;
+    }
+}

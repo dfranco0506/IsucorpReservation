@@ -19,10 +19,6 @@ Entities\Destination:
     rating:
       type: decimal
       nullable: true
-    favorite:
-      type: boolean
-      nullable: false
-      default: 0
     description:
       type: string
       length: 255

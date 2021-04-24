@@ -83,6 +83,8 @@ return array(
 
     //messages
     'success_create'=>'El elemento se ha creado exitosamente.',
+    'success_add_favorite'=>'La reservación se ha creado como favorita.',
+    'success_remove_favorite'=>'La reservación ha dejado de ser favorita.',
     'success_update'=>'El elemento se ha modificado exitosamente.',
     'success_delete'=>'El elemento se ha creado exitosamente.',
 );

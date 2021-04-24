@@ -4,18 +4,15 @@
     <section id="banner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-sm-4 col-md-4">
+                <div class="col-lg-3 col-sm-12 col-md-12">
                     <label><b><?php echo lang('App.list_reservations'); ?></b></label></div>
                 <div class="col-lg-4 hidden-text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
-                <div class="col-lg-2 col-sm-2 col-md-2">
+                <div class="col-lg-5 col-sm-12 col-md-12">
                     <button class="btn rounded-0"
                             onclick="location.href='<?php echo base_url(); ?>/reservation/create'"><?php echo lang('App.create_reservation'); ?>
                     </button>
-
-                </div>
-                <div class="col-lg-2 col-sm-2 col-md-2" style="margin-left: 7px">
                     <button class="btn rounded-0"
                             onclick="location.href='<?php echo base_url(); ?>/contacts'"><?php echo lang('App.list_contacts'); ?>
                     </button>
@@ -77,6 +74,10 @@
             $(location).attr('href', '/reservation/edit/' + url);
         }
 
+        function editFavorites(url) {
+            $(location).attr('href', '/reservation/update_destination_favorite/' + url);
+        }
+
         function sort(sort_by) {
             var table = $('#table_id').DataTable({
                 "processing": true,
@@ -95,22 +96,12 @@
                     {"data": "image_url"},
                     {"data": "name"},
                     {"data": "rating"},
-                    {
-                        "data": "favorite", render: function (data) {
-                            if (data === 0) {
-                                return '<span class="hidden-favorites"style="color: grey">Add Favorites  </span><img class="td-internal-image favorite" src="/img/favorite-heart-icon-disabled.png" height="20" width="20"/><br />';
-                            } else {
-                                return '<span class="hidden-favorites">Add Favorites  </span><img class="td-internal-image favorite" src="/img/favorite-heart-icon-active.png" height="20" width="20"/><br />';
-                            }
-
-                        }
-                    },
+                    {"data": "favorite"},
                     {"data": "actions", searchable: false, sortable: false}
                 ],
 
             });
         }
-
     </script>
 
 <?= $this->endSection() ?>

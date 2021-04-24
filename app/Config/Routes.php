@@ -39,6 +39,7 @@ $routes->post('/reservation/store', 'ReservationController::store');
 $routes->get('/reservation/edit/(:num)', 'ReservationController::edit/$1');
 $routes->post('/reservation/update/(:num)', 'ReservationController::update/$1');
 $routes->post('/reservation/list', 'ReservationController::sortByDataTable');
+$routes->get('/reservation/update_destination_favorite/(:num)', 'ReservationController::destinationFavorite/$1');
 
 $routes->get('/contacts', 'ContactController::index');
 $routes->post('/contacts/list', 'ContactController::getLists');
