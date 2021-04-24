@@ -4,6 +4,52 @@
     box-sizing: border-box;
 }
 
+.ui-widget {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px !important;
+}
+
+.ui-datepicker {
+    width: 19.8em !important;
+    padding: .2em .2em 0;
+    display: none;
+}
+
+.ui-datepicker-title select{
+    height: 23px;
+    padding-left: 11px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #dedede;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBmaWxsPScjZDZkOGRiJyBoZWlnaHQ9JzMwJyB2aWV3Qm94PScwIDAgMzAgMzAnIHdpZHRoPSczMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNNyAxMGw1IDUgNS01eicvPjxwYXRoIGQ9J00wIDBoMjR2MjRIMHonIGZpbGw9J25vbmUnLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-position-x: 120%;
+    background-position-y: 0px;
+    font-size: 12px;
+    outline: none;
+    margin-bottom: 4%;
+    color: darkgrey;
+}
+
+.ui-timepicker-standard a {
+    border: 1px solid transparent;
+    color: gray;
+    display: block;
+    padding: .2em .4em;
+    text-decoration: none;}
+
+.ui-timepicker-standard {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 12px;
+    background-color: #FFF;
+    border: 1px solid #AAA;
+    /* color: #222; */
+    margin: 0;
+    padding: 2px;
+    color: grey;
+}
 /*---------------------------------header-------------------------*/
 header {
     background-image: url('../img/banner.png');
@@ -160,23 +206,6 @@ table.dataTable.no-footer {
 
 }
 
-.ui-timepicker-standard a {
-    border: 1px solid transparent;
-    color: gray;
-    display: block;
-    padding: .2em .4em;
-    text-decoration: none;}
-
-.ui-timepicker-standard {
-    font-family: Verdana,Arial,sans-serif;
-    font-size: 12px;
-    background-color: #FFF;
-    border: 1px solid #AAA;
-    /* color: #222; */
-    margin: 0;
-    padding: 2px;
-    color: grey;
-}
 input[type=text], input[type=password], input[type=number] {
     padding: 10px 30px;
     text-align: left;
@@ -187,8 +216,9 @@ input[type=text], input[type=password], input[type=number] {
     color: grey;
 }
 
-input:focus, input:active{
-    border: 1px solid #d6d8db;
+input:focus{
+    outline: 1px solid #d6d8db;
+    background-color: #fff;
 }
 
 input::-webkit-inner-spin-button {
@@ -209,13 +239,11 @@ select {
     background-position-y: 5px;
     font-size: 12px;
     outline: none;
-
     margin-bottom: 4%;
     color: darkgrey;
 }
-input:active, input:focus{
-    border: none;
-    background-color: #fff;
+select option{
+    color: black;
 }
 
 .select-icon{

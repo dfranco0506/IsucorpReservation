@@ -107,17 +107,62 @@ class ReservationController extends BaseController
 
     public function store()
     {
-
         $postData = $this->request->getPost();
-//        echo '<pre>';print_r($postData);die;
-        if ($this->validate('reservation')){
+        $validation = [
+        'contact_name' => [
+            'label' => 'Validation.contact_name',
+            'rules' => 'required|min_length[3]',
+            'errors' => [
+                'required' => 'Validation.contact_name.required'
+            ]
+        ],
+        'contact_type' => [
+            'label' => 'Validation.contact_type',
+            'rules' => 'required|numeric',
+            'errors' => [
+                'required' => 'Validation.contact_type.required',
+                'numeric'=>'Validation.contact_phone.required'
+            ]
+        ],
+        'contact_phone' => [
+            'label' => 'Validation.contact_phone',
+            'rules' => 'required|regex_match[^\d{2}[\s\.-]?\d{4}[\s\.-]?\d{4}$]',
+            'errors' => [
+                'required' => 'Validation.contact_phone.required',
+                'regex_match'=>'Validation.contact_phone.phone_valid_format'
+            ]
+        ],
+        'contact_birthday' => [
+            'label' => 'Validation.contact_birthday',
+            'rules' => 'required|valid_date[d/m/Y]|valid_birthday_date',
+            'errors' => [
+                'required' => 'Validation.contact_birthday.required',
+                'valid_birthday_date'=>'Validation.contact_birthday.valid_birthday_date'
+            ]
+        ],
+        'reservation_date' => [
+            'label' => 'Validation.reservation_date',
+            'rules' => 'required|valid_date[d/m/Y]|valid_reservation_date',
+            'errors' => [
+                'required' => 'Validation.reservation_date.required',
+                'valid_reservation_date'=>'Validation.reservation_date.valid_reservation_date'
+            ]
+        ],
+        'reservation_time' => [
+            'label' => 'Validation.reservation_time',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Validation.reservation_time.required',
+            ]
+        ],
+    ];
+        if ($this->validate($validation)){
             $contact_data = [
                 "contact_name" => $postData['contact_name'],
                 "contact_type" => $postData['contact_type'],
                 "contact_phone" => $postData['contact_phone'],
                 "contact_birthday" => $postData['contact_birthday']
             ];
-
             try {
                 $id_contact = $this->contact_model->addContact($contact_data);
                 if (empty($id_contact))

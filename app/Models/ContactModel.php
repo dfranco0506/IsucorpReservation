@@ -56,7 +56,7 @@ class ContactModel extends BaseModel
         $contact->setName($data['contact_name']);
         $contact->setContactType($contact_type);
         $contact->setPhoneNumber($data['contact_phone']);
-        $contact->setBirthDate(DateTime::createFromFormat("m/d/Y", $data['contact_birthday']));
+        $contact->setBirthDate(DateTime::createFromFormat("d/m/Y", $data['contact_birthday']));
         $contact->setCreatedAt(DateTime::createFromFormat("d/m/Y", date("d/m/Y")));
         $contact->setUpdatedAt(DateTime::createFromFormat("d/m/Y", date("d/m/Y")));
 
@@ -69,6 +69,7 @@ class ContactModel extends BaseModel
 
         $this->em->persist($contact);
         $this->em->flush();
+//        echo '<pre>';print_r($contact);die;
 
         return $contact;
     }

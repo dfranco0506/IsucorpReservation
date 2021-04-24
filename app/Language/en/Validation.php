@@ -54,6 +54,8 @@ return [
     'valid_ip' => 'The field {field} must contain a valid IP.',
     'valid_url' => 'The field {field} must contain a valid URL.',
     'valid_date' => 'The field {field} must contain a valid date',
+    'valid_birthday_date' => 'The field {field} must contain a date less than the current date.',
+    'valid_reservation_date' => 'The field {field} must contain a date older than the current date.',
     'format_date' => 'The field {field} must contain a valid date, with the format d/m/yyyy',
     'phone_valid_format'    => 'The field {field} must contain numbers and dash with the format 00-0000-0000',
 

@@ -22,10 +22,10 @@ class Doctrine
         // CONNECTION SETUP YOU NEED TO CHANGE WITH YOURS DBB
         $connection_options = array(
             'driver'        => 'pdo_mysql',
-            'user'          => '',
-            'password'      => '',
-            'host'          => '',
-            'dbname'        => '',
+            'user'          => 'isucorp',
+            'password'      => '123456',
+            'host'          => 'localhost',
+            'dbname'        => 'db_isucorp_reservation',
             'charset'       => 'utf8',
             'driverOptions' => array(
                 'charset'   => 'utf8',
