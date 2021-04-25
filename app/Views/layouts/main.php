@@ -74,7 +74,7 @@
 <body>
 <header>
 
-    <div class="row" style="float: right; padding: 50px 27%">
+    <div style="float: right; padding: 50px 27%">
         <div class="navbar-tool dropdown" style="float: right">
             <a class="topbar-link" data-to  data-toggle="dropdown" aria-expanded="false">
                 <img width="20" src="/img/<?= session('locale')=='en'?'en':'es'?>.jpg" />

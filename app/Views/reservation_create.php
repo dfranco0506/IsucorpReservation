@@ -23,63 +23,80 @@
     <div class="form-container">
         <?= $validation->listErrors('my_list') ?>
         <form name="reservation_form" method="post" action="<?= base_url() ?>/reservation/store">
-            <div class="row" style="background-color: white;margin-bottom: 10px">
-                <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <input type="text" autofocus="autofocus" placeholder="<?php echo lang('Validation.contact_name'); ?>"
-                           name="contact_name" formnovalidate>
-                    <i class="fa fa-user fa-2x"></i>
+            <div class="row other">
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-user fa-2x icon"></i>
+                        <input class="input-field" type="text" autofocus="autofocus"
+                               placeholder="<?php echo lang('Validation.contact_name'); ?>"
+                               name="contact_name" formnovalidate>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <select id="contact_type" name="contact_type" required>
-                        <option><?php echo lang('Validation.contact_type'); ?></option>
-                        <?php
-                        foreach ($contact_types as $contact_type) {
-                            echo '<option value="' . $contact_type->getIdContactType() . '" ' . $contact_type->getIdContactType() . '>' . $contact_type->getName() . '</option>';
-                        }
-                        ?>
-                    </select>
-                    <i class="fa fa-sort-amount-desc select-icon"></i>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-sort-amount-desc fa-2x icon"></i>
+                        <select class="input-field" id="contact_type" name="contact_type" required>
+                            <option><?php echo lang('Validation.contact_type'); ?></option>
+                            <?php
+                            foreach ($contact_types as $contact_type) {
+                                echo '<option value="' . $contact_type->getIdContactType() . '" ' . $contact_type->getIdContactType() . '>' . $contact_type->getName() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <input type="text" autocomplete="off" placeholder="<?php echo lang('Validation.contact_phone'); ?> (00-0000-0000)"
-                           name="contact_phone" id="contact_phone" maxlength="12" required>
-                    <i class="fa fa-phone fa-2x"></i>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-phone fa-2x icon"></i>
+                        <input class="input-field" type="text" autocomplete="off"
+                               placeholder="<?php echo lang('Validation.contact_phone'); ?> (00-0000-0000)"
+                               name="contact_phone" id="contact_phone" maxlength="12" required>
+                    </div>
                 </div>
-                <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <input type="text" id="contact_birthday" autocomplete="off"
-                           placeholder="<?php echo lang('Validation.contact_birthday'); ?>" name="contact_birthday"
-                           required data-date-format="dd/mm/yyyy">
-                    <i class="fa fa-calendar fa-2x"></i>
-                </div>
-            </div>
-            <div class="row" style="background-color: white;margin-bottom: 10px">
-                <div class="col-lg-6 col-sm-6 col-md-6 fontuser">
-                    <select id="destination" name="destination" required>
-                        <option value="0"><?php echo lang('Validation.destination'); ?></option>
-                        <?php
-                        foreach ($destinations as $destination) {
-                            echo '<option value="' . $destination->getIdDestination() . '" ' . $destination->getIdDestination() . '>' . $destination->getNAme() . '</option>';
-                        }
-                        ?>
-                    </select>
-                    <i class="fa fa-sort-amount-desc select-icon"></i>
-                </div>
-                <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <input type="text" id="reservation_date" autocomplete="off"
-                           placeholder="<?php echo lang('Validation.reservation_date'); ?>" name="reservation_date"
-                           required data-date-format="dd/mm/yyyy">
-                    <i class="fa fa-calendar fa-2x"></i>
-                </div>
-                <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <input class="timepicker" type="text" autocomplete="off"
-                           placeholder="<?php echo lang('Validation.reservation_time'); ?>" name="reservation_time"
-                           id="reservation_time" required>
-                    <i class="fa fa-clock fa-2x"></i>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-calendar fa-2x icon"></i>
+                        <input class="input-field" type="text" id="contact_birthday" autocomplete="off"
+                               placeholder="<?php echo lang('Validation.contact_birthday'); ?>" name="contact_birthday"
+                               required data-date-format="dd/mm/yyyy">
+                    </div>
                 </div>
             </div>
-            <div class="row" style="background-color: white;margin-bottom: 10px">
+
+            <div class="row other">
+                <div class="col-lg-6 col-sm-6 col-md-6">
+                    <div class="input-icons">
+                        <i class="fa fa-sort-amount-desc fa-2x icon"></i>
+                        <select class="input-field" id="destination" name="destination" required>
+                            <option value="0"><?php echo lang('Validation.destination'); ?></option>
+                            <?php
+                            foreach ($destinations as $destination) {
+                                echo '<option value="' . $destination->getIdDestination() . '" ' . $destination->getIdDestination() . '>' . $destination->getNAme() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-calendar fa-2x icon"></i>
+                        <input class="input-field" type="text" id="reservation_date" autocomplete="off"
+                               placeholder="<?php echo lang('Validation.reservation_date'); ?>" name="reservation_date"
+                               required data-date-format="dd/mm/yyyy">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-clock fa-2x icon"></i>
+                        <input class="input-field" class="timepicker" type="text" autocomplete="off"
+                               placeholder="<?php echo lang('Validation.reservation_time'); ?>" name="reservation_time"
+                               id="reservation_time" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row other">
                 <div class="col-12">
-                   <textarea name="text_editor"></textarea>
+                    <textarea name="text_editor"></textarea>
                 </div>
             </div>
             <script type="text/javascript">
@@ -92,7 +109,7 @@
             </div>
         </form>
 
-    </div>
+    </div></div>
 
 <?= $this->endSection() ?>
 
@@ -103,7 +120,7 @@
         });
         $(function () {
             $("#contact_birthday").datepicker({
-                dateFormat:'dd/mm/yy',
+                dateFormat: 'dd/mm/yy',
                 changeYear: true,
                 changeMonth: true,
                 yearRange: '-100:+0',
@@ -113,7 +130,7 @@
         });
         $(function () {
             $("#reservation_date").datepicker({
-                dateFormat:'dd/mm/yy',
+                dateFormat: 'dd/mm/yy',
                 changeYear: true,
                 changeMonth: true,
                 minDate: new Date(),
@@ -122,7 +139,7 @@
         });
 
         $('#contact_phone').on('input', function () {
-            this.value = this.value.replace(/[^\d-]/,'');
+            this.value = this.value.replace(/[^\d-]/, '');
         });
 
         $('.timepicker').timepicker({

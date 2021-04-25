@@ -192,6 +192,8 @@ class ReservationController extends BaseController
     public function edit($id)
     {
         helper(['form', 'url']);
+        session();
+        $data['validation'] = \Config\Services::validation();
         $data['title'] = "Edit Reservation";
         $data['reservations'] = $this->reservation_model->getReservationById($id);
         $data['contact_types'] = $this->contact_type_model->getAllContactTypes();

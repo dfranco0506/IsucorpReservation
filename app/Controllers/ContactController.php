@@ -147,6 +147,7 @@ class ContactController extends BaseController
     public function edit($id)
     {
         helper(['form', 'url']);
+        $data['validation'] = \Config\Services::validation();
         $data['title'] = "Edit Contact";
         $data['contact'] = $this->contact_model->findContactById($id);
         $data['contact_types'] = $this->contact_type_model->getAllContactTypes();

@@ -63,7 +63,7 @@ header {
 /*---------------------------------banner-------------------------*/
 #banner {
     margin-top: -30px;
-    background-color: #f8f8f8;
+    background-color: #fafafa !important;
     min-height: 90px;
     position: relative;
 }
@@ -73,6 +73,18 @@ header {
     position: static;
     margin: 0 auto;
     padding-top: 1%;
+}
+
+.container:after {
+    background-color: #fff;
+    content: '';
+    display: block;
+    position: absolute;
+    /*top: 10px;*/
+    /*left: 10px;*/
+    /*right: 10px;*/
+    /*bottom: 10px;*/
+    z-index: -1;
 }
 
 
@@ -100,11 +112,11 @@ header {
 
 /*---------------------------------body----------------------------*/
 body {
-    background-color: #efefef;
+    background-color: #efefef!important;
 }
 
 body .container {
-    /*background-color: #f8f8f8;*/
+    /*background-color: #efefef !important;*/
     max-width: 72%;
     margin: 30px auto;
 }
@@ -114,10 +126,14 @@ body .form-container {
     max-width: 70%;
     margin: 30px auto;
 }
+
+.other {
+    background-color: #fafafa !important;
+    margin-bottom: 10px;
+}
 /*------------------------------data table---------------------------*/
 .table {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px 100px 20px;
 }
 .table-a:hover{
     text-decoration: none;
@@ -125,12 +141,11 @@ body .form-container {
 
 .table td, .table th {
     padding: .75rem;
-    border-top: 10px solid #dee2e6;
-    border-color: #f8f8f8;
+    border-top: 10px solid #fafafa !important;
+    border-color: #fafafa!important;
     font-size: 12px;
-    height: border-box;
-    alignment: center;
-    background-color: #d6d8db;
+    background-color: #efefef;
+    vertical-align: middle !important;
 }
 table.dataTable.no-footer {
     width: 100%!important;
@@ -162,8 +177,7 @@ table.dataTable.no-footer {
 }
 .dataTables_wrapper .dataTables_paginate {
     float: left !important;
-    text-align: right;
-    padding-top: 0.25em;
+    margin-bottom: 20px;
 }
 .hidden-favorites {
     text-align: right;
@@ -184,8 +198,9 @@ table.dataTable.no-footer {
     font-size: 12px;
     align-content: center;
     width: max-content;
-    float: right;
-    text-transform:uppercase
+    float: left;
+    text-transform:uppercase;
+    margin-right: 15px;
 }
 
 #table_id_length, #table_id_filter, #table_id_info {
@@ -195,22 +210,6 @@ table.dataTable.no-footer {
     margin-left: 14px;
 }
 /*--------------------------------components---------------------------*/
-.input-icons i {
-    position: absolute;
-}
-
-.input-icons {
-    width: 100%;
-    /*margin-bottom: 10px;*/
-}
-
-.icon {
-    /*margin-top: 8px;*/
-    padding: 7px;
-    min-width: 100px;
-    color: #d6d8db;
-
-}
 
 input[type=text], input[type=password], input[type=number] {
     padding: 10px 30px;
@@ -231,6 +230,26 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+.input-icons i {
+    position: absolute;
+}
+
+.input-icons {
+    width: 100%;
+}
+
+.icon {
+    padding: 9px 0 0 4px;
+    min-width: 40px;
+    color: #d6d8db;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0 0 0 36px;
+    text-align: center;
+}
+
 select {
     height: 39px;
     padding-left: 35px;
@@ -243,26 +262,33 @@ select {
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-position-y: 5px;
-    font-size: 12px;
+    font-size: 12px !important;
     outline: none;
     color: darkgrey;
     margin-top: 5px !important;
 }
 select option{
-    color: black;
+    color: darkgrey;
 }
-
 select[disabled]{
-    background-color: #FAFAFA;
+    background-color: #F7F7F7;
     color: #202428;
 }
-.select-icon{
-    /*margin-left: -2%;*/
+.large-select{
+    margin-left: -8%;
 }
 
+.table-sort-by{
+    margin-left: 5px;
+;
+}
+
+form{
+    background-color: #efefef !important;
+}
 .form-button {
-    background-color: #bc0001;
-    color: white;
+    background-color: #bc0001!important;
+    color: white !important;
     width: auto;
     float: right;
     margin-bottom: 10px;
@@ -288,18 +314,6 @@ select, select .input-search::-ms-expand {
     width: 100%;
 }
 
-.fontuser {
-    width: 100%;
-    position: relative;
-}
-
-.fontuser i {
-    position: absolute;
-    left: 5%;
-    top: 20%;
-    color: #dee2e6;
-    font-size: x-large;
-}
 
 ::-webkit-input-placeholder {
     color: darkgray;

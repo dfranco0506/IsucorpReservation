@@ -18,63 +18,79 @@
 	
 	</section>
 	<div class="container">
-        <?php
-        if (session()->has('message')) {
-            ?>
-            <div class="alert <?= session()->getFlashdata('alert-class') ?>">
-                <?= session()->getFlashdata('message') ?>
-            </div>
-            <?php
-        }
-        ?>
+        <?= $validation->listErrors('my_list') ?>
 		<form method="post" name="reservation_form" action="<?=site_url('/reservation/update/'.$reservations->getIdReservation())?>">
-			<div class="row" style="background-color: white;margin-bottom: 10px">
-				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-						<input type="text" disabled placeholder="<?php echo lang('Form.contact_name');?>" name="contact_name" required value="<?= old('name',$reservations->getContact()->getName()) ?>">
-					<i class="fa fa-user fa-2x"></i>
-				</div>
-				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <select id="contact_type" name="contact_type" required disabled>
-						<option><?php echo lang('Validation.contact_type');?></option>
-						<?php
-							foreach ($contact_types as $contact_type) {
-								echo '<option value="' . $contact_type->getIdContactType() . '" '. 'selected = '. old('contact_type',$reservations->getContact()->getContactType()->getName() ).'>' . $contact_type->getName() . '</option>';
-							}
-						?>
-					</select>
-					<i class="fa fa-sort-amount-desc select-icon"></i>
-				</div>
-				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-						<input type="text" placeholder="<?php echo lang('Validation.contact_phone');?>" name="contact_phone" required disabled value="<?= old('name',$reservations->getContact()->getPhoneNumber()) ?>">
-					<i class="fa fa-phone fa-2x"></i>
-				</div>
-				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-						<input type="text" id="contact_birthday" disabled placeholder="<?php echo lang('Validation.contact_birthday');?>" name="contact_birthday" required value="<?= old('birth_date',$birthday) ?>">
-					<i class="fa fa-calendar fa-2x"></i>
-				</div>
+			<div class="row other">
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-user fa-2x icon"></i>
+                        <input class="input-field" type="text" autofocus="autofocus" disabled
+                               placeholder="<?php echo lang('Validation.contact_name'); ?>"
+                               name="contact_name" formnovalidate value="<?= old('name',$reservations->getContact()->getName()) ?>">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-sort-amount-desc fa-2x icon"></i>
+                        <select class="input-field" id="contact_type" name="contact_type" required disabled>
+                            <option><?php echo lang('Validation.contact_type'); ?></option>
+                            <?php
+                            foreach ($contact_types as $contact_type) {
+                                echo '<option value="' . $contact_type->getIdContactType() . '" '. 'selected = '. old('contact_type',$reservations->getContact()->getContactType()->getName() ).'>' . $contact_type->getName() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-phone fa-2x icon"></i>
+                        <input class="input-field" type="text" autocomplete="off" disabled
+                               placeholder="<?php echo lang('Validation.contact_phone'); ?> (00-0000-0000)"
+                               name="contact_phone" id="contact_phone" maxlength="12" required value="<?= old('name',$reservations->getContact()->getPhoneNumber()) ?>">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-calendar fa-2x icon"></i>
+                        <input class="input-field" type="text" id="contact_birthday" autocomplete="off" disabled
+                               placeholder="<?php echo lang('Validation.contact_birthday'); ?>" name="contact_birthday"
+                               required data-date-format="dd/mm/yyyy" value="<?= old('birth_date',$birthday) ?>">
+                    </div>
+                </div>
 			</div>
-			<div class="row" style="background-color: white;margin-bottom: 10px">
-				<div class="col-lg-6 col-sm-6 col-md-6 fontuser">
-					<select id="destination" name="destination" required>
-						<option value="0"><?php echo lang('Validation.destination');?></option>
-						<?php
-							foreach ($destinations as $destination) {
-								echo '<option value="' . $destination->getIdDestination() . '" '. 'selected = '. old('contact_type',$reservations->getDestination()->getName() ).'>' . $destination->getName() . '</option>';
-							}
-						?>
-					</select>
-					<i class="fa fa-sort-amount-desc select-icon"></i>
-				</div>
-				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-						<input type="text" id="reservation_date" placeholder="<?php echo lang('Validation.reservation_date');?>" name="reservation_date" value="<?= old('reservation_date',$reservation_date) ?>">
-					<i class="fa fa-calendar fa-2x"></i>
-				</div>
-				<div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-						<input class="timepicker" type="text" placeholder="<?php echo lang('Validation.reservation_time');?>" name="reservation_time" id="reservation_time" required value="<?= old('reservation_time',$reservation_time) ?>">
-					<i class="fa fa-calendar fa-2x"></i>
-				</div>
+			<div class="row other">
+                <div class="col-lg-6 col-sm-6 col-md-6">
+                    <div class="input-icons">
+                        <i class="fa fa-sort-amount-desc fa-2x icon"></i>
+                        <select class="input-field" id="destination" name="destination" required>
+                            <option value="0"><?php echo lang('Validation.destination'); ?></option>
+                            <?php
+                            foreach ($destinations as $destination) {
+                                echo '<option value="' . $destination->getIdDestination() . '" '. 'selected = '. old('contact_type',$reservations->getDestination()->getName() ).'>' . $destination->getName() . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-calendar fa-2x icon"></i>
+                        <input class="input-field" type="text" id="reservation_date" autocomplete="off"
+                               placeholder="<?php echo lang('Validation.reservation_date'); ?>" name="reservation_date"
+                               required data-date-format="dd/mm/yyyy" value="<?= old('reservation_date',$reservation_date) ?>">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-4">
+                    <div class="input-icons">
+                        <i class="fa fa-clock fa-2x icon"></i>
+                        <input class="input-field" class="timepicker" type="text" autocomplete="off"
+                               placeholder="<?php echo lang('Validation.reservation_time'); ?>" name="reservation_time"
+                               id="reservation_time" required value="<?= old('reservation_time',$reservation_time) ?>">
+                    </div>
+                </div>
 			</div>
-			<div class="row" style="background-color: white;margin-bottom: 10px">
+			<div class="row other">
 				<div class="col-12">
 					<textarea name="text_editor" <?= old('name',$reservations->getDescription()) ?>></textarea>
 				</div>

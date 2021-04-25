@@ -26,19 +26,21 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-sm-4 col-md-4 fontuser table-sort-by">
-                <select id="sort_by" name="sort_by" placeholder="Contact Type" required>
-                    <option value="0" selected="sort_by"><?php echo lang('Validation.sort_by'); ?></option>
-                    <option value="1">By Date Ascending</option>
-                    <option value="2">By Date Descending</option>
-                    <option value="3">By Alphabetic Ascending</option>
-                    <option value="4">By Alphabetic Descending</option>
-                    <option value="5">By Ranking</option>
-                </select>
-                <i class="fa fa-sort-amount-desc fa-2x"></i>
+            <div class="col-lg-3 col-sm-4 col-md-4 table-sort-by">
+                <div class="input-icons">
+                    <i class="fa fa-sort-amount-desc fa-2x icon"></i>
+                    <select class="input-field" id="sort_by" name="sort_by" placeholder="Contact Type" required>
+                        <option value="0" selected="sort_by"><?php echo lang('Validation.sort_by'); ?></option>
+                        <option value="1">By Date Ascending</option>
+                        <option value="2">By Date Descending</option>
+                        <option value="3">By Alphabetic Ascending</option>
+                        <option value="4">By Alphabetic Descending</option>
+                        <option value="5">By Ranking</option>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row other">
             <div class="table-responsive ">
                 <table id="table_id" class="table">
                     <thead hidden>

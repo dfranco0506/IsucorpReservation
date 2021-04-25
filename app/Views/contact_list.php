@@ -3,7 +3,7 @@
 <?= $this->section("content") ?>
     <section id="banner">
         <div class="container">
-            <div class="row">
+            <div class="row other">
                 <div class="col-lg-3 col-sm-12 col-md-12">
                     <label><b><?php echo lang('App.list_contacts'); ?></b></label></div>
                 <div class="col-lg-4 hidden-text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -25,7 +25,7 @@
         <?= $validation->listErrors('my_list') ?>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row other">
             <div class="table-responsive ">
                 <table id="table_id" class="table">
                     <thead>
