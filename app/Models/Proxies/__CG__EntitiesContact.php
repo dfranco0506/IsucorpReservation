@@ -66,10 +66,10 @@ class Contact extends \Entities\Contact implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entities\\Contact' . "\0" . 'id_contact', '' . "\0" . 'Entities\\Contact' . "\0" . 'name', '' . "\0" . 'Entities\\Contact' . "\0" . 'phone_number', '' . "\0" . 'Entities\\Contact' . "\0" . 'birth_date', '' . "\0" . 'Entities\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'contact_type'];
+            return ['__isInitialized__', '' . "\0" . 'Entities\\Contact' . "\0" . 'id_contact', '' . "\0" . 'Entities\\Contact' . "\0" . 'name', '' . "\0" . 'Entities\\Contact' . "\0" . 'phone_number', '' . "\0" . 'Entities\\Contact' . "\0" . 'birth_date', '' . "\0" . 'Entities\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'reservation', '' . "\0" . 'Entities\\Contact' . "\0" . 'contact_type'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entities\\Contact' . "\0" . 'id_contact', '' . "\0" . 'Entities\\Contact' . "\0" . 'name', '' . "\0" . 'Entities\\Contact' . "\0" . 'phone_number', '' . "\0" . 'Entities\\Contact' . "\0" . 'birth_date', '' . "\0" . 'Entities\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'contact_type'];
+        return ['__isInitialized__', '' . "\0" . 'Entities\\Contact' . "\0" . 'id_contact', '' . "\0" . 'Entities\\Contact' . "\0" . 'name', '' . "\0" . 'Entities\\Contact' . "\0" . 'phone_number', '' . "\0" . 'Entities\\Contact' . "\0" . 'birth_date', '' . "\0" . 'Entities\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entities\\Contact' . "\0" . 'reservation', '' . "\0" . 'Entities\\Contact' . "\0" . 'contact_type'];
     }
 
     /**
@@ -317,6 +317,28 @@ class Contact extends \Entities\Contact implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactType', []);
 
         return parent::getContactType();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getReservation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReservation', []);
+
+        return parent::getReservation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setReservation($reservation)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReservation', [$reservation]);
+
+        return parent::setReservation($reservation);
     }
 
 }

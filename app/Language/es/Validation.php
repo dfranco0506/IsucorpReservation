@@ -82,9 +82,10 @@ return array(
     'sort_by' => 'Ordenar por',
 
     //messages
-    'success_create'=>'El elemento se ha creado exitosamente.',
+    'success_create'=>'{object} creado(a) exitosamente.',
     'success_add_favorite'=>'La reservación se ha creado como favorita.',
     'success_remove_favorite'=>'La reservación ha dejado de ser favorita.',
-    'success_update'=>'El elemento se ha modificado exitosamente.',
-    'success_delete'=>'El elemento se ha creado exitosamente.',
+    'success_update'=>'{object} modificado(a) exitosamente.',
+    'success_delete'=>'{object} {object_name} eliminado(a) exitosamente.',
+    'contact_non_delete'=>'El contacto {object_name} tiene al menos una reservación asociada, no es posible eliminarlo.'
 );

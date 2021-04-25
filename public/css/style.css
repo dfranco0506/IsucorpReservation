@@ -104,7 +104,7 @@ body {
 }
 
 body .container {
-    background-color: #f8f8f8;
+    /*background-color: #f8f8f8;*/
     max-width: 72%;
     margin: 30px auto;
 }

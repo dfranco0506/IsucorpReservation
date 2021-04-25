@@ -19,4 +19,7 @@ return [
     'create_contact'   => 'Crear contactos ',
     'send'   => 'enviar',
 
+
+    'contact'=>'Contacto',
+    'reservation'=>'Reservación',
 ];

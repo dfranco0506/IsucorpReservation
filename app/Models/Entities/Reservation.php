@@ -38,7 +38,12 @@
 		private $updated_at;
 		
 		/**
-		 * @var \Entities\Contact
+         * @var \Entities\Contact
+         * @ORM\ManyToOne(targetEntity="\Entities\Contact", , inversedBy="reservation")
+         * @ORM\JoinColumns({
+         *   @ORM\JoinColumn(name="id_contact", referencedColumnName="contact")
+         * })
+         *
 		 */
 		private $contact;
 		
@@ -168,28 +173,23 @@
 		public function getUpdatedAt() {
 			return $this->updated_at;
 		}
-		
-		/**
-		 * Set contact.
-		 *
-		 * @param \Entities\Contact|null $contact
-		 *
-		 * @return Reservation
-		 */
-		public function setContact(\Entities\Contact $contact = null) {
-			$this->contact = $contact;
-			
-			return $this;
-		}
-		
-		/**
-		 * Get contact.
-		 *
-		 * @return \Entities\Contact|null
-		 */
-		public function getContact() {
-			return $this->contact;
-		}
+
+        /**
+         * @return mixed
+         */
+        public function getContact()
+        {
+            return $this->contact;
+        }
+
+        /**
+         * @param mixed $contact
+         */
+        public function setContact($contact)
+        {
+            $this->contact = $contact;
+        }
+
 		
 		/**
 		 * Set destination.

@@ -23,22 +23,12 @@
 
     </section>
     <div class="form-container">
-        <?php
-        if (session()->has('message')) {
-            ?>
-            <div class="alert <?= session()->getFlashdata('alert-class') ?>">
-                <?= session()->getFlashdata('message') ?>
-            </div>
-            <?php
-        }
-        ?>
-        <form method="post" action="<?= site_url('/contact/update/' . $contacts->getIdContact()) ?>">
+        <?= $validation->listErrors('my_list') ?>
+        <form method="post" action="<?= site_url('/contact/update/' . $contact->getIdContact()) ?>">
             <div class="row" style="background-color: white;margin-bottom: 10px">
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <label>
-                        <input type="text" placeholder="<?php echo lang('Validation.contact_name'); ?>" name="contact_name"
-                               required value="<?= old('name', $contacts->getName()) ?>">
-                    </label>
+                    <input type="text" autofocus="autofocus" placeholder="<?php echo lang('Validation.contact_name'); ?>"
+                           name="contact_name" formnovalidate value="<?= old('name', $contact->getName()) ?>">
                     <i class="fa fa-user fa-2x"></i>
                 </div>
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
@@ -46,27 +36,22 @@
                         <option><?php echo lang('Validation.contact_type'); ?></option>
                         <?php
                         foreach ($contact_types as $contact_type) {
-                            echo '<option value="' . $contact_type->getIdContactType() . '" ' . 'selected = ' . old('contact_type', $contacts->getContactType()->getName()) . '>' . $contact_type->getName() . '</option>';
-                        }
+                            echo '<option value="' . $contact_type->getIdContactType() . '" ' . 'selected = ' . old('contact_type', $contact->getContactType()->getName()) . '>' . $contact_type->getName() . '</option>';                        }
                         ?>
                     </select>
-
                     <i class="fa fa-sort-amount-desc select-icon"></i>
                 </div>
 
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <label>
-                        <input type="text" placeholder="<?php echo lang('Validation.contact_phone'); ?>" name="contact_phone"
-                               required value="<?= old('phone_number', $contacts->getPhoneNumber()) ?>">
-                    </label>
+                    <input type="text" autocomplete="off" placeholder="<?php echo lang('Validation.contact_phone'); ?> (00-0000-0000)"
+                           name="contact_phone" id="contact_phone" maxlength="12" required value="<?= old('phone_number', $contact->getPhoneNumber()) ?>">
                     <i class="fa fa-phone fa-2x"></i>
                 </div>
+
                 <div class="col-lg-3 col-sm-4 col-md-4 fontuser">
-                    <label>
-                        <input type="text" id="contact_birthday"
-                               placeholder="<?php echo lang('Validation.contact_birthday'); ?>" name="contact_birthday"
-                               required value="<?= old('birth_date', $birthday) ?>">
-                    </label>
+                    <input type="text" id="contact_birthday" autocomplete="off"
+                           placeholder="<?php echo lang('Validation.contact_birthday'); ?>" name="contact_birthday"
+                           required data-date-format="dd/mm/yyyy" value="<?= old('birth_date', $birthday) ?>">
                     <i class="fa fa-calendar fa-2x"></i>
                 </div>
             </div>

@@ -48,9 +48,7 @@ $routes->get('/contact/create', 'ContactController::create');
 $routes->post('/contact/store', 'ContactController::store');
 $routes->get('/contact/edit/(:num)', 'ContactController::edit/$1');
 $routes->post('/contact/update/(:num)', 'ContactController::update/$1');
-
-//TODO fix
-$routes->get('/contact/delete/(:num)', 'ContactController::delete/$1');
+$routes->delete('/contact/delete/(:num)', 'ContactController::delete/$1');
 
 /*
  * --------------------------------------------------------------------

@@ -1,5 +1,5 @@
 <?php if (!empty($errors) || session('error')) : ?>
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger flash-message" role="alert">
         <ul>
             <?php if (!empty($errors)) : ?>
                 <?php foreach ($errors as $error) : ?>
@@ -11,10 +11,17 @@
         </ul>
     </div>
 <?php elseif (session()->has('success')): ?>
-    <div class="alert alert-success" role="alert">
+    <div name="flash_message" class="alert alert-success flash-message" role="alert">
         <ul>
             <a><?= session()->getFlashdata('success') ?></a>
         </ul>
     </div>
 
 <?php endif ?>
+
+
+<script type="text/javascript">
+    setTimeout(function() {
+        $('div.flash-message').fadeOut('fast');
+    }, 3000);
+</script>

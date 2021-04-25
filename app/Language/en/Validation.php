@@ -70,7 +70,7 @@ return [
     'mime_in' => '{field} does not have a valid mime type.',
     'ext_in' => '{field} does not have a valid file extension.',
     'max_dims' => '{field} is not an image or is too tall or wide.',
-    'contact_process_fail'=>'Create contact process fail. Check provide information.',
+    'contact_process_fail'=>'Create contact process fail. Check the information provided.',
 
     //Form fields
     'contact_name' => 'Contact Name...',
@@ -84,10 +84,13 @@ return [
     'reservation_time' => 'Reservation Time',
     'sort_by' => 'Sort By',
 
+
     //messages
-    'success_create'=>'Item created successfully.',
+    'success_create'=>'{object} created successfully.',
     'success_add_favorite'=>'Reservation added as favorite.',
     'success_remove_favorite'=>'Reservation removed as favorite.',
-    'success_update'=>'Item updated successfully.',
-    'success_delete'=>'Item deleted successfully.',
+    'success_update'=>'{object} updated successfully.',
+    'success_delete'=>'{object} {object_name} deleted successfully.',
+    'contact_non_delete'=>'The contact {object_name} has at least one reservation associated, it is not possible delete it.'
+
 ];

@@ -37,6 +37,12 @@ class Contact
      */
     private $updated_at;
 
+    /**
+     * @ORM\OneToMany(targetEntity="\Entities\Reservation", mappedBy="contact", cascade={"persist","refresh", "remove"})
+     * @ORM\OrderBy({"fechadesde" = "ASC"})
+     */
+    private $reservation;
+
 
     /**
      * Get idContact.
@@ -195,5 +201,21 @@ class Contact
     public function getContactType()
     {
         return $this->contact_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReservation()
+    {
+        return $this->reservation;
+    }
+
+    /**
+     * @param mixed $reservation
+     */
+    public function setReservation($reservation)
+    {
+        $this->reservation = $reservation;
     }
 }

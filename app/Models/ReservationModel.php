@@ -17,6 +17,18 @@ class ReservationModel extends BaseModel
         return $this->em->getRepository('Entities\Reservation')->findAll();
     }
 
+    public function findByContact($contact_id)
+    {
+        $query = $this->em->createQueryBuilder();
+        $query
+            ->select('count(r.id_reservation)')
+            ->from('Entities\Reservation', 'r')
+            ->where($query->expr()->eq('r.contact', ':contact_id'))
+            ->setParameter('contact_id',$contact_id);
+        return $query->getQuery()->getSingleScalarResult();
+
+    }
+
     public function getReservationCount()
     {
         $query = $this->em->createQueryBuilder();

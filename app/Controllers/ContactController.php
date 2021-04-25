@@ -2,13 +2,16 @@
 
 use App\Models\ContactModel;
 use App\Models\ContactTypeModel;
-use PHPUnit\Exception;
+use App\Models\ReservationModel;
+use Exception;
+use function PHPUnit\Framework\isNull;
 use function PHPUnit\Framework\throwException;
 
 class ContactController extends BaseController
 {
     public $contact_model;
     public $contact_type_model;
+    public $reservation_model;
 
     /**
      * ContactController constructor.
@@ -17,11 +20,14 @@ class ContactController extends BaseController
     {
         $this->contact_model = new ContactModel();
         $this->contact_type_model = new ContactTypeModel();
+        $this->reservation_model = new ReservationModel();
     }
 
     function index()
     {
-        return view('contact_list');
+        helper(['form', 'url']);
+        $data['validation'] = \Config\Services::validation();
+        return view('contact_list', $data);
     }
 
     function getLists()
@@ -52,8 +58,8 @@ class ContactController extends BaseController
                 $nestedData['contact_type'] = $contact->getContactType()->getName();
                 $edit_function = 'editItem(' . $contact->getIdContact() . ')';
                 $del_function = 'deleteItem(' . $contact->getIdContact() . ')';
-                $html = '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" class="btn rounded-0">EDIT</button></div>' .
-                    '<div class="table-secondary"><button type="button" onclick="' . $del_function . '" class="btn rounded-0">DELETE</button></div>';
+                $html = '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" id="editbtn" class="btn rounded-0">EDIT</button></div>' .
+                    '<div class="table-secondary"><button type="button" name = "' . $contact->getIdContact() . '" id="deletebtn" class="btn rounded-0">DELETE</button></div>';
                 $nestedData['actions'] = $html;
                 $result[] = $nestedData;
             }
@@ -71,20 +77,18 @@ class ContactController extends BaseController
 
     public function create()
     {
+        session();
         $data['title'] = "Create Contact";
         $data['contact_types'] = $this->contact_type_model->getAllContactTypes();
+        $data['validation'] = \Config\Services::validation();
 
         return view('contact_create', $data);
     }
 
     public function store()
     {
-        helper(['form', 'url']);
         $postData = $this->request->getPost();
-        $validation = \Config\Services::validation();
-//        $session = \Config\Services::session();
-
-        $validation->setRules([
+        $validation = [
             'contact_name' => [
                 'label' => 'Validation.contact_name',
                 'rules' => 'required|min_length[3]',
@@ -94,59 +98,59 @@ class ContactController extends BaseController
             ],
             'contact_type' => [
                 'label' => 'Validation.contact_type',
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => 'Validation.contact_type.required'
+                    'required' => 'Validation.contact_type.required',
+                    'numeric' => 'Validation.contact_phone.required'
                 ]
             ],
             'contact_phone' => [
                 'label' => 'Validation.contact_phone',
-                'rules' => 'required|numeric',
+                'rules' => 'required|regex_match[^\d{2}[\s\.-]?\d{4}[\s\.-]?\d{4}$]',
                 'errors' => [
                     'required' => 'Validation.contact_phone.required',
+                    'regex_match' => 'Validation.contact_phone.phone_valid_format'
                 ]
             ],
             'contact_birthday' => [
                 'label' => 'Validation.contact_birthday',
-                'rules' => 'required',
+                'rules' => 'required|valid_date[d/m/Y]|valid_birthday_date',
                 'errors' => [
                     'required' => 'Validation.contact_birthday.required',
+                    'valid_birthday_date' => 'Validation.contact_birthday.valid_birthday_date'
                 ]
             ],
-        ]);
+        ];
 
-        if ($validation->withRequest($this->request)->run() == false) {
-            session()->setFlashdata('message', $this->validator);
 
-            return redirect()->route('contact/create')->withInput()->with('validation', $this->validator);
-
-//            echo view('contact_create', [
-//                'validation' => $this->validator,
-//            ]);
-        } else {
-            $data = [
+        if ($this->validate($validation)) {
+            $contact_data = [
                 "contact_name" => $postData['contact_name'],
                 "contact_type" => $postData['contact_type'],
                 "contact_phone" => $postData['contact_phone'],
                 "contact_birthday" => $postData['contact_birthday']
             ];
             try {
-                $this->contact_model->addContact($data);
-                session()->setFlashdata('message', lang('Validation.success_create'));
-            } catch (Exception $e) {
-                session()->setFlashdata('message', throwException($e->getMessage()));
+                $id_contact = $this->contact_model->addContact($contact_data);
+                if (empty($id_contact))
+                    throw new Exception(lang('Validation.contact_process_fail'));
+                else
+                    session()->setFlashdata('success', lang('Validation.success_create', ['object'=>lang('App.contact')]));
+            } catch (Exception $exception) {
+                throw new Exception($exception->getMessage());
             }
-//                    echo '<pre>';print_r(session()->getFlashdata('message'));die;
             return redirect()->to(base_url('/contacts'));
         }
+        return redirect()->route('contact/create')->withInput();
     }
 
     public function edit($id)
     {
+        helper(['form', 'url']);
         $data['title'] = "Edit Contact";
-        $data['contacts'] = $this->contact_model->findContactById($id);
+        $data['contact'] = $this->contact_model->findContactById($id);
         $data['contact_types'] = $this->contact_type_model->getAllContactTypes();
-        $birthday_date = $data['contacts']->getBirthDate();
+        $birthday_date = $data['contact']->getBirthDate();
         $data['birthday'] = $birthday_date->format('d/m/Y');
 
         return view('contact_edit', $data);
@@ -154,12 +158,9 @@ class ContactController extends BaseController
 
     public function update($id)
     {
-        helper(['form', 'url']);
         $postData = $this->request->getPost();
-        $validation = \Config\Services::validation();
-//        $session = \Config\Services::session();
 
-        $validation->setRules([
+        $validation = [
             'contact_name' => [
                 'label' => 'Validation.contact_name',
                 'rules' => 'required|min_length[3]',
@@ -169,57 +170,71 @@ class ContactController extends BaseController
             ],
             'contact_type' => [
                 'label' => 'Validation.contact_type',
-                'rules' => 'required',
+                'rules' => 'required|numeric',
                 'errors' => [
-                    'required' => 'Validation.contact_type.required'
+                    'required' => 'Validation.contact_type.required',
+                    'numeric' => 'Validation.contact_phone.required'
                 ]
             ],
             'contact_phone' => [
                 'label' => 'Validation.contact_phone',
-                'rules' => 'required|numeric',
+                'rules' => 'required|regex_match[^\d{2}[\s\.-]?\d{4}[\s\.-]?\d{4}$]',
                 'errors' => [
                     'required' => 'Validation.contact_phone.required',
+                    'regex_match' => 'Validation.contact_phone.phone_valid_format'
                 ]
             ],
             'contact_birthday' => [
                 'label' => 'Validation.contact_birthday',
-                'rules' => 'required',
+                'rules' => 'required|valid_date[d/m/Y]|valid_birthday_date',
                 'errors' => [
                     'required' => 'Validation.contact_birthday.required',
+                    'valid_birthday_date' => 'Validation.contact_birthday.valid_birthday_date'
                 ]
             ],
-        ]);
+        ];
 
-        if ($validation->withRequest($this->request)->run() == false) {
-            session()->setFlashdata('message', $this->validator);
-
-            return redirect()->route('contact/create')->withInput()->with('validation', $this->validator);
-        } else {
-            $data = [
+        if ($this->validate($validation)) {
+            $contact_data = [
                 "contact_name" => $postData['contact_name'],
                 "contact_type" => $postData['contact_type'],
                 "contact_phone" => $postData['contact_phone'],
                 "contact_birthday" => $postData['contact_birthday']
             ];
             try {
-                $this->contact_model->updateContact($data, $id);
-                session()->setFlashdata('message', lang('Validation.success_update'));
-            } catch (Exception $e) {
-                session()->setFlashdata('message', throwException($e->getMessage()));
+                $this->contact_model->updateContact($contact_data, $id);
+                if (empty($id_contact))
+                    throw new Exception(lang('Validation.contact_process_fail'));
+                else
+                    session()->setFlashdata('success', lang('Validation.success_update', ['object'=>lang('App.contact')]));
+            } catch (Exception $exception) {
+                throw new Exception($exception->getMessage());
             }
-
             return redirect()->to(base_url('/contacts'));
         }
+        return redirect()->route('contact/create')->withInput();
     }
 
     public function delete($id)
     {
-        try {
-            $this->contact_model->deleteContact($id);
-            session()->setFlashdata('message', lang('Validation.success_delete'));
-        } catch (Exception $e) {
-            session()->setFlashdata('message', throwException($e->getMessage()));
+        $contact = $this->contact_model->findContactById($id);
+
+        if ($contact == null)
+            session()->setFlashdata('error', 'Contact not found');
+        else {
+            $reservations = $this->reservation_model->findByContact($contact->getIdContact());
+
+            if ($reservations > 0) {
+                session()->setFlashdata('error', lang('Validation.contact_non_delete', ['object_name' => $contact->getName()]));
+            } else {
+                try {
+                    $this->contact_model->deleteContact($id);
+                    session()->setFlashdata('success', lang('Validation.success_delete', ['object' => lang('App.contact'), 'object_name' => $contact->getName()]));
+                } catch (Exception $e) {
+                    session()->setFlashdata('error', $e->getMessage());
+                }
+            }
         }
-        return redirect()->to(base_url('/contacts'));
+
     }
 }
