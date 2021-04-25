@@ -16,9 +16,6 @@ Entities\Destination:
       type: string
       length: 255
       nullable: false
-    rating:
-      type: decimal
-      nullable: true
     description:
       type: string
       length: 255

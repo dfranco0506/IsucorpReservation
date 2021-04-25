@@ -18,16 +18,10 @@
 		</div>
 	
 	</section>
+    <div class="form-container">
+        <?= $validation->listErrors('my_list') ?>
+    </div>
 	<div class="container">
-        <?php
-        if (session()->has('message')) {
-            ?>
-            <div class="alert success<?= session()->getFlashdata('alert-class') ?>">
-                <?= session()->getFlashdata('message') ?>
-            </div>
-            <?php
-        }
-        ?>
 		<div class="row">
 			<div class="table-responsive ">
 				<table id="table_id" class="table">

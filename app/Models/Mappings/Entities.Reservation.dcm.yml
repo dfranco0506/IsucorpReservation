@@ -25,6 +25,10 @@ Entities\Reservation:
       type: boolean
       nullable: false
       default: 0
+    rating:
+      type: integer
+      nullable: false
+      default: 0
     created_at:
       type: datetime
       nullable: false

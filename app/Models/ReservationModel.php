@@ -105,4 +105,14 @@ class ReservationModel extends BaseModel
 
         return $reservation->getFavorite();
     }
+
+    public function updateRating($id)
+    {
+        $reservation = $this->em->getRepository('Entities\Reservation')->find($id);
+        $reservation->setRating(2);
+        $this->em->persist($reservation);
+        $this->em->flush();
+
+        return $reservation->getRating();
+    }
 }

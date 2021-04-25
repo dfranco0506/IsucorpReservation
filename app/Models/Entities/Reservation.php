@@ -241,4 +241,33 @@
     {
         return $this->favorite;
     }
+    /**
+     * @var string|null
+     */
+    private $rating;
+
+
+    /**
+     * Set rating.
+     *
+     * @param string|null $rating
+     *
+     * @return Reservation
+     */
+    public function setRating($rating = null)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating.
+     *
+     * @return string|null
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
 }
