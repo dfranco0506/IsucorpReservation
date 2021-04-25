@@ -133,11 +133,11 @@ class ContactController extends BaseController
             try {
                 $id_contact = $this->contact_model->addContact($contact_data);
                 if (empty($id_contact))
-                    throw new Exception(lang('Validation.contact_process_fail'));
+                    session()->setFlashdata('error', lang('Validation.contact_process_fail'));
                 else
                     session()->setFlashdata('success', lang('Validation.success_create', ['object'=>lang('App.contact')]));
             } catch (Exception $exception) {
-                throw new Exception($exception->getMessage());
+                session()->setFlashdata('error', $exception->getMessage());
             }
             return redirect()->to(base_url('/contacts'));
         }
@@ -194,7 +194,7 @@ class ContactController extends BaseController
                 ]
             ],
         ];
-
+//        echo '<pre>';print_r($validation);die;
         if ($this->validate($validation)) {
             $contact_data = [
                 "contact_name" => $postData['contact_name'],
@@ -203,17 +203,17 @@ class ContactController extends BaseController
                 "contact_birthday" => $postData['contact_birthday']
             ];
             try {
-                $this->contact_model->updateContact($contact_data, $id);
+                $id_contact= $this->contact_model->updateContact($contact_data, $id);
                 if (empty($id_contact))
-                    throw new Exception(lang('Validation.contact_process_fail'));
+                    session()->setFlashdata('error', lang('Validation.contact_process_fail'));
                 else
                     session()->setFlashdata('success', lang('Validation.success_update', ['object'=>lang('App.contact')]));
             } catch (Exception $exception) {
-                throw new Exception($exception->getMessage());
+                session()->setFlashdata('error', $exception->getMessage());
             }
             return redirect()->to(base_url('/contacts'));
         }
-        return redirect()->route('contact/create')->withInput();
+        return redirect()->to(base_url('/contact/edit/'.$id))->withInput();
     }
 
     public function delete($id)

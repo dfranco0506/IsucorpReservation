@@ -87,7 +87,7 @@ class ReservationController extends BaseController
         try {
             $data = $this->request->getPost();
             $this->reservation_model->updateRating($data);
-            session()->setFlashdata('success', lang('Le agradecemos por su evaluación de '.$data['rating'].' puntos'));
+            session()->setFlashdata('success', lang('Le agradecemos por su evaluación de ' . $data['rating'] . ' puntos'));
         } catch (Exception $e) {
             session()->setFlashdata('error', $e->getMessage());
         }
@@ -166,9 +166,9 @@ class ReservationController extends BaseController
             try {
                 $id_contact = $this->contact_model->addContact($contact_data);
                 if (empty($id_contact))
-                    throw new Exception(lang('Validation.contact_process_fail'));
+                    session()->setFlashdata('error', lang('Validation.contact_process_fail'));
             } catch (Exception $exception) {
-                throw new Exception($exception->getMessage());
+                session()->setFlashdata('error', $exception->getMessage());
             }
             $reservation_data = [
                 "contact" => $id_contact,
@@ -180,9 +180,9 @@ class ReservationController extends BaseController
 
             try {
                 $this->reservation_model->addReservation($reservation_data);
-                session()->setFlashdata('success', lang('Validation.success_create', ['object'=>lang('App.reservation')]));
+                session()->setFlashdata('success', lang('Validation.success_create', ['object' => lang('App.reservation')]));
             } catch (Exception $e) {
-                session()->setFlashdata('error', throwException($e->getMessage()));
+                session()->setFlashdata('error', $e->getMessage());
             }
             return redirect()->to(base_url('/'));
         }
@@ -237,14 +237,14 @@ class ReservationController extends BaseController
 
             try {
                 $this->reservation_model->updateReservation($reservation_data, $id);
-                session()->setFlashdata('success', lang('Validation.success_update', ['object'=>lang('App.reservation')]));
+                session()->setFlashdata('success', lang('Validation.success_update', ['object' => lang('App.reservation')]));
                 return redirect()->to(base_url('/'));
             } catch (Exception $e) {
                 session()->setFlashdata('error', $e->getMessage());
             }
 
         }
-        return redirect()->route('reservation/edit')->withInput();
+        return redirect()->to(base_url('reservation/edit/' . $id))->withInput();
     }
 
 }
