@@ -18,8 +18,8 @@ return [
 	'list_contacts'   => 'List contacts ',
 	'create_contact'   => 'Create contact ',
     'send'   => 'send',
-
-
+    'delete'=>'Delete',
+    'cancel' => 'Cancel',
     'contact'=>'Contact',
     'reservation'=>'Reservation',
 ];

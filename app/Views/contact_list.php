@@ -114,15 +114,24 @@
         $(document).on('click', '#deletebtn', function () {
             var btn = $(this);
             $.confirm({
-                title: 'Confirm',
-                content: 'Delete this contact?',
+                icon: 'fa fa-smile-o',
+                theme: 'modern',
+                closeIcon: true,
+                animation: 'scale',
+                title: "<?php echo lang('Validation.confirm_delete_title'); ?>",
+                content:"<?php echo lang('Validation.confirm_delete_message'); ?>",
                 buttons: {
-                    confirm: function () {
-                        myAjax("DELETE", "/contact/delete/" + btn.attr('name'), "/contacts");
+                    'confirm': {
+                        text: "<?php echo lang('App.delete'); ?>",
+                        action: function(){
+                            myAjax("DELETE", "/contact/delete/" + btn.attr('name'), "/contacts");
+                        }
                     },
-                    cancel: function () {
-                        // $.alert('Canceled!');
-                    }
+                    'cancel': {
+                        text: "<?php echo lang('App.cancel'); ?>",
+                        action: function(){
+                        }
+                    },
                 }
             });
         });

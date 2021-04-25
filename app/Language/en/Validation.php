@@ -84,6 +84,8 @@ return [
     'reservation_time' => 'Reservation Time',
     'sort_by' => 'Sort By',
 
+    'confirm_delete_title'=>'Confirm Deletion',
+    'confirm_delete_message' => 'Are you sure you want delete this contact?',
 
     //messages
     'success_create'=>'{object} created successfully.',

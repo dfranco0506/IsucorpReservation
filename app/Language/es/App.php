@@ -11,15 +11,15 @@
 
 // Time language settings
 return [
-	'select_language'   => 'Seleccione un idioma',
-    'create_reservation'   => 'Crear reservación',
-    'edit_reservation'   => 'Actualizar reservación',
-    'list_reservations'   => 'Listar reservaciones',
-    'list_contacts'   => 'Listar contactos ',
-    'create_contact'   => 'Crear contactos ',
-    'send'   => 'enviar',
-
-
-    'contact'=>'Contacto',
-    'reservation'=>'Reservación',
+    'select_language' => 'Seleccione un idioma',
+    'create_reservation' => 'Crear reservación',
+    'edit_reservation' => 'Actualizar reservación',
+    'list_reservations' => 'Listar reservaciones',
+    'list_contacts' => 'Listar contactos ',
+    'create_contact' => 'Crear contactos ',
+    'send' => 'enviar',
+    'delete' => 'Eliminar',
+    'cancel' => 'Cancelar',
+    'contact' => 'Contacto',
+    'reservation' => 'Reservación',
 ];
