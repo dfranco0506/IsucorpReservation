@@ -38,7 +38,7 @@ class ReservationModel extends BaseModel
             ->setFirstResult($start)
             ->setMaxResults($limit);
 
-        if ($sort_col == 'name' || $sort_col == 'rating') {
+        if ($sort_col == 'name') {
             $query->innerJoin('r.destination', 'd');
             $sort = 'd.' . $sort_col;
         }
@@ -106,10 +106,10 @@ class ReservationModel extends BaseModel
         return $reservation->getFavorite();
     }
 
-    public function updateRating($id)
+    public function updateRating($data)
     {
-        $reservation = $this->em->getRepository('Entities\Reservation')->find($id);
-        $reservation->setRating(2);
+        $reservation = $this->em->getRepository('Entities\Reservation')->find($data['reservation_id']);
+        $reservation->setRating($data['rating']);
         $this->em->persist($reservation);
         $this->em->flush();
 

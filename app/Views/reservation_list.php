@@ -66,7 +66,14 @@
             sort($("select.sort").children("option:selected").val());
         });
 
-        $(document).on('change', '#user_type', function (event) {
+        $(document).on('change', '#rating', function () {
+
+            var data = {reservation_id: $(this).attr('name'), rating: $(this).val()};
+
+            myAjax("POST", "/reservation/rating", "/", data);
+        });
+
+        $(document).on('change', '#sort_by', function (event) {
             sort($(this).children("option:selected").val());
         });
 
@@ -75,8 +82,9 @@
         }
 
         function editFavorites(url) {
-            $(location).attr('href', '/reservation/update_destination_favorite/' + url);
+            myAjax("POST", "/reservation/favorite/" + url, "/", "");
         }
+
 
         function sort(sort_by) {
             var table = $('#table_id').DataTable({
@@ -100,6 +108,13 @@
                     {"data": "actions", searchable: false, sortable: false}
                 ],
 
+                "createdRow": function (row, data, dataIndex) {
+
+                    // any manipulation in the row element
+                    var ratingInput = $(row).find('.rating');
+                    $(ratingInput).rating();
+
+                }
             });
         }
     </script>

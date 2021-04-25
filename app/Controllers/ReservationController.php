@@ -32,7 +32,7 @@ class ReservationController extends BaseController
     {
         helper(['form', 'url']);
         $data['validation'] = \Config\Services::validation();
-        return view('reservation_list',$data);
+        return view('reservation_list', $data);
     }
 
     public function sortByDataTable()
@@ -50,11 +50,13 @@ class ReservationController extends BaseController
             foreach ($reservations as $reservation) {
                 $edit_function = 'editItem(' . $reservation->getIdReservation() . ')';
                 $edit_favorites = 'editFavorites(' . $reservation->getIdReservation() . ')';
+                $edit_rating = 'editRating(' . $reservation->getIdReservation() . ')';
                 $nestedData['id_reservation'] = $reservation->getIdReservation();
                 $nestedData['image_url'] = '<img class="td-internal-image" src="' . base_url() . '/' . $reservation->getDestination()->getImageUrl() . '" height="50" width="50"/' . '>';
                 $nestedData['name'] = '<b>' . $reservation->getDestination()->getName() . '</b><br>' . date('j M Y h:i a', strtotime($reservation->getDate()->format('Y-m-d')));
-                $nestedData['rating'] = '<span class="hidden-favorites"><b>' . 'Raiting' . '</b></span><br>' . $this->starRating($reservation->getDestination()->getRating());
-                $nestedData['favorite'] = $reservation->getFavorite()==0?'<a style="cursor: pointer" class="table-a"><span class="hidden-favorites" onclick="' . $edit_favorites . '" style="color: grey">Add Favorites  </span><img class="td-internal-image favorite" onclick="' . $edit_favorites . '"src="/img/favorite-heart-icon-disabled.png" height="20" width="20"/><br /></a>':'<a style="cursor: pointer" class="table-a"><span class="hidden-favorites" onclick="' . $edit_favorites . '" style="color: #212529">Add Favorites  </span><img class="td-internal-image favorite" onclick="' . $edit_favorites . '" src="/img/favorite-heart-icon-active.png" height="20" width="20"/><br /></a>';
+//                $nestedData['rating'] = '<span class="hidden-favorites"><b>' . 'Raiting' . '</b></span><br>' . $this->starRating($reservation->getDestination()->getRating());
+                $nestedData['rating'] = '<span class="hidden-favorites"><b>' . 'Rating' . '</b></span><br><input name="' . $reservation->getIdReservation() . '" value="' . $reservation->getRating() . '" type="number" id="rating" class="rating text-warning" min=0 max=5 step=0.1 data-size="sm" data-stars="5" href="#" >';
+                $nestedData['favorite'] = $reservation->getFavorite() == 0 ? '<a style="cursor: pointer" class="table-a"><span class="hidden-favorites" onclick="' . $edit_favorites . '" style="color: grey">Add Favorites  </span><img class="td-internal-image favorite" onclick="' . $edit_favorites . '"src="/img/favorite-heart-icon-disabled.png" height="20" width="20"/><br /></a>' : '<a style="cursor: pointer" class="table-a"><span class="hidden-favorites" onclick="' . $edit_favorites . '" style="color: #212529">Add Favorites  </span><img class="td-internal-image favorite" onclick="' . $edit_favorites . '" src="/img/favorite-heart-icon-active.png" height="20" width="20"/><br /></a>';
                 $html = '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" class="btn rounded-0">EDIT</button></div>';
                 $nestedData['actions'] = $html;
                 $result[] = $nestedData;
@@ -70,41 +72,28 @@ class ReservationController extends BaseController
         echo json_encode($json_data);
     }
 
-    public function destinationFavorite($id){
-
+    public function favorite($id)
+    {
         try {
-            $reservation=$this->reservation_model->updateFavorite($id);
-            $reservation==true?session()->setFlashdata('success', lang('Validation.success_add_favorite')):session()->setFlashdata('success', lang('Validation.success_remove_favorite'));
-            return redirect('/');
+            $reservation = $this->reservation_model->updateFavorite($id);
+            $reservation == true ? session()->setFlashdata('success', lang('Validation.success_add_favorite')) : session()->setFlashdata('success', lang('Validation.success_remove_favorite'));
         } catch (Exception $e) {
             session()->setFlashdata('error', $e->getMessage());
         }
-        return $this->index();
-
     }
 
-    public function starRating($rating)
+    public function rating()
     {
-
-        $whole_stars = floor($rating);
-        $half_star = round($rating * 2) % 2;
-        $empty_stars = 5 - $rating;
-        $HTML = "";
-        for ($i = 0; $i < $whole_stars; $i++) {
-            $HTML .= '<span><img class="td-internal-image" src="' . base_url() . '/img/full-star.jpg' . '" height="13" width="13" alt=""/' . '></span>';
-        }
-        if ($half_star) {
-            $HTML .= '<span><img class="td-internal-image" src="' . base_url() . '/img/half-star.jpg' . '" height="13" width="13" alt=""/' . '></span>';
-            for ($i = 0; $i < $empty_stars - 1; $i++) {
-                $HTML .= '<span><img class="td-internal-image" src="' . base_url() . '/img/empty-star.jpg' . '" height="13" width="13" alt=""/' . '></span>';
-            }
-        } else {
-            for ($i = 0; $i < $empty_stars; $i++) {
-                $HTML .= '<span><img class="td-internal-image" src="' . base_url() . '/img/empty-star.jpg' . '" height="13" width="13" alt=""/' . '></span>';
-            }
+        try {
+//            var_dump($this->request->getPost());
+//            die;
+            $data = $this->request->getPost();
+            $this->reservation_model->updateRating($data);
+            session()->setFlashdata('success', lang('Le agradecemos por su evaluación de '.$data['rating'].' puntos'));
+        } catch (Exception $e) {
+            session()->setFlashdata('error', $e->getMessage());
         }
 
-        return $HTML;
     }
 
     public function create()
