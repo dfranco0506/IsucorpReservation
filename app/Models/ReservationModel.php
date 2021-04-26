@@ -98,7 +98,7 @@ class ReservationModel extends BaseModel
         $destination = $this->em->getRepository('Entities\Destination')->find($data['destination']);
         $reservation_time = new DateTime($data['reservation_time']);
         $reservation->setDestination($destination);
-        $reservation->setDate(DateTime::createFromFormat("m/d/Y", $data['reservation_date']));
+        $reservation->setDate(DateTime::createFromFormat("d/m/Y", $data['reservation_date']));
         $reservation->setTime($reservation_time);
         $reservation->setDescription($data['description']);
         $reservation->setCreatedAt(new DateTime());
