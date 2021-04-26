@@ -202,7 +202,7 @@ class ReservationController extends BaseController
         $reservation_time = $data['reservations']->getTime();
         $reservation_date = $data['reservations']->getDate();
         $data['reservation_date'] = $reservation_date->format('d/m/Y');
-        $data['reservation_time'] = $reservation_time->format('H:i:s');
+        $data['reservation_time'] = $reservation_time->format('h:i A');
         return view('reservation_edit', $data);
     }
 

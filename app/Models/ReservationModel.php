@@ -68,7 +68,7 @@ class ReservationModel extends BaseModel
         $reservation_time = new DateTime($data['reservation_time']);
         $reservation->setContact($contact);
         $reservation->setDestination($destination);
-        $reservation->setDate(DateTime::createFromFormat("m/d/Y", $data['reservation_date']));
+        $reservation->setDate(DateTime::createFromFormat("d/m/Y", $data['reservation_date']));
         $reservation->setTime($reservation_time);
         $reservation->setDescription($data['description']);
         $reservation->setFavorite(0);
