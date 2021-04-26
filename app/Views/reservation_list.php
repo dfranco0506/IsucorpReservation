@@ -63,6 +63,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section("scripts") ?>
+    <script src="js/bootstrap4-rating-input.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             sort($("select.sort").children("option:selected").val());

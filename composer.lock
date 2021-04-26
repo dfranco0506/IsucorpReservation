@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ecdd3c31d7c2c3f03641ba45b84addf",
+    "content-hash": "7f4f427208adac5c54f9cc6d109068f4",
     "packages": [
         {
             "name": "beberlei/doctrineextensions",
@@ -1411,7 +1411,6 @@
                 "reference": "274395ae326a50ea01648e43879a01a256a072dd",
                 "shasum": ""
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1440,10 +1439,6 @@
                 "star",
                 "svg"
             ],
-            "support": {
-                "issues": "https://github.com/kartik-v/bootstrap-star-rating/issues",
-                "source": "https://github.com/kartik-v/bootstrap-star-rating/tree/master"
-            },
             "funding": [
                 {
                     "url": "https://opencollective.com/bootstrap-star-rating",
@@ -4657,5 +4652,5 @@
         "ext-mbstring": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }

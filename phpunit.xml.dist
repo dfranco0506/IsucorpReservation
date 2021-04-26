@@ -18,6 +18,11 @@
 		<exclude>
 			<directory suffix=".php">./app/Views</directory>
 			<file>./app/Config/Routes.php</file>
+			<!-- By adding the below line I can remove the error -->
+			<directory suffix=".phtml">./app</directory>
+			<file>./app/doctrine</file>
+			<file>./app/Doctrine.php</file>
+			<file>./app/Bootstrap.php</file>
 		</exclude>
 		<report>
 			<clover outputFile="build/logs/clover.xml"/>
@@ -31,13 +36,15 @@
 			<directory>./tests</directory>
 		</testsuite>
 	</testsuites>
+
 	<logging>
 		<testdoxHtml outputFile="build/logs/testdox.html"/>
 		<testdoxText outputFile="build/logs/testdox.txt"/>
 		<junit outputFile="build/logs/logfile.xml"/>
 	</logging>
+
 	<php>
-		<server name="app.baseURL" value="http://example.com/"/>
+		<server name="app.baseURL" value="http://localhost:8080/"/>
 		<!-- Directory containing phpunit.xml -->
 		<const name="HOMEPATH" value="./"/>
 		<!-- Directory containing the Paths config file -->

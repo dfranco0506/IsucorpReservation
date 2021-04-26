@@ -23,7 +23,7 @@
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://use.fontawesome.com/5ac93d4ca8.js"></script>
-    <script src="js/bootstrap4-rating-input.js"></script>
+<!--    <script src="js/bootstrap4-rating-input.js"></script>-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <!--	timepicker-->
@@ -42,12 +42,11 @@
     <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            CKEDITOR.replace('text_editor', {
-                fullPage: true,
-
-            });
-        });
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     CKEDITOR.replace('text_editor', {
+        //         fullPage: true,
+        //     });
+        // });
 
         function myAjax(method, path, url_to_redirect, data = "") {
             $.ajax({
