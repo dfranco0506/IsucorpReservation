@@ -87,8 +87,8 @@
                 </div>
                 <div class="col-lg-3 col-sm-4 col-md-4">
                     <div class="input-icons">
-                        <i class="fa fa-clock fa-2x icon"></i>
-                        <input class="input-field" class="timepicker" type="text" autocomplete="off"
+                        <i class="fa fa-calendar fa-2x icon"></i>
+                        <input class="timepicker input-field" type="text" autocomplete="off"
                                placeholder="<?php echo lang('Validation.reservation_time'); ?>" name="reservation_time"
                                id="reservation_time" required>
                     </div>

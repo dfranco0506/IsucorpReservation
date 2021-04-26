@@ -362,9 +362,19 @@ select, select .input-search::-ms-expand {
 @media (max-width: 767px) {
     body .container {
         background-color: #f8f8f8;
-        max-width: 72%;
+        max-width: 100%;
         margin: 30px auto;
     }
+
+    body .full-container {
+
+        background-color: #f8f8f8;
+        max-width: 100%;
+        margin: 10px auto;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .table {
         padding-left: 0;
         padding-right: 0;
@@ -375,8 +385,7 @@ select, select .input-search::-ms-expand {
 
     .table td, .table th {
         padding: .75rem;
-        border-top: 10px solid #dee2e6;
-        border-color: #f8f8f8;
+        border-bottom: 1px solid #fafafa !important;
         font-size: 12px;
         height: border-box;
         alignment: center;
@@ -384,6 +393,17 @@ select, select .input-search::-ms-expand {
 
     .table td button, .table th button{
         margin-top: 7px;
+    }
+
+    tr:nth-child(even) td {
+        background: #ebebeb;
+    }
+    tr:nth-child(odd) td {
+        background: #f7f7f7;
+    }
+
+    .image-column{
+     display: none;
     }
 
     .favorite {
@@ -442,14 +462,7 @@ select, select .input-search::-ms-expand {
         alignment: center;
     }
 
-    body .full-container {
 
-        background-color: #f8f8f8;
-        max-width: 100%;
-        margin: 10px auto;
-        padding-left: 0;
-        padding-right: 0;
-    }
 
     body .container {
 
@@ -480,7 +493,7 @@ select, select .input-search::-ms-expand {
         padding-left: 7px;
     }
     .col select, .col-1 select, .col-10 select, .col-11 select, .col-12 select, .col-2 select, .col-3 select, .col-4 select, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3 select, .col-lg-4, .col-lg-5, .col-lg-6 select, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
-        width: 104%;
+        width: 100%;
         margin-top: 3px;
     }
     .col input, .col-1 input, .col-10 input, .col-11 input, .col-12 input, .col-2 input, .col-3 input, .col-4 input, .col-5 input, .col-6 input, .col-7 input, .col-8 input, .col-9 input, .col-auto input, .col-lg input, .col-lg-1 input, .col-lg-10 input, .col-lg-11 input, .col-lg-12 input, .col-lg-2 input, .col-lg-3 input, .col-lg-4 input, .col-lg-5 input, .col-lg-6 input, .col-lg-7 input, .col-lg-8 input, .col-lg-9 input, .col-lg-auto input, .col-md input, .col-md-1 input, .col-md-10 input, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
@@ -515,10 +528,7 @@ select, select .input-search::-ms-expand {
         display: none !important;
     }
     select {
-        width: 100%;
-        height: 100%;
-        padding-left: 20%;
-        margin-top: 2%;
+        height: 60px;
     }
 
     form select {

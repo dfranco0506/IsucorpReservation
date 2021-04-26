@@ -25,7 +25,7 @@
         <?= $validation->listErrors('my_list') ?>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row other" style="margin-bottom: 0">
             <div class="col-lg-3 col-sm-4 col-md-4 table-sort-by">
                 <div class="input-icons">
                     <i class="fa fa-sort-amount-desc fa-2x icon"></i>
