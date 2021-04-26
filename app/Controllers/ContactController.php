@@ -58,8 +58,7 @@ class ContactController extends BaseController
                 $nestedData['contact_type'] = $contact->getContactType()->getName();
                 $edit_function = 'editItem(' . $contact->getIdContact() . ')';
                 $del_function = 'deleteItem(' . $contact->getIdContact() . ')';
-                $html = '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" id="editbtn" class="btn rounded-0">EDIT</button></div>' .
-                    '<div class="table-secondary"><button type="button" name = "' . $contact->getIdContact() . '" id="deletebtn" class="btn rounded-0">DELETE</button></div>';
+                $html ='<div class="table-secondary"><button type="button" name = "' . $contact->getIdContact() . '" id="deletebtn" class="btn rounded-0">DELETE</button></div>'. '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" id="editbtn" class="btn rounded-0">EDIT</button></div>';
                 $nestedData['actions'] = $html;
                 $result[] = $nestedData;
             }

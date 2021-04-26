@@ -198,7 +198,7 @@ table.dataTable.no-footer {
     font-size: 12px;
     align-content: center;
     width: max-content;
-    float: left;
+    float: right;
     text-transform:uppercase;
     margin-right: 15px;
 }
@@ -431,10 +431,10 @@ select, select .input-search::-ms-expand {
     select {
         margin-bottom: 7px !important;
     }
-    .fontuser i {
-        left: 4%;
-        top: 27%;
-    }
+    /*.fontuser i {*/
+        /*left: 4%;*/
+        /*top: 27%;*/
+    /*}*/
     .form-button {
         background-color: #bc0001;
         color: white;
@@ -508,13 +508,6 @@ select, select .input-search::-ms-expand {
         width: max-content;
     }
 
-    .input-icons i {
-        position: absolute;
-        left: 15px;
-        top: 30%;
-        font-weight: bold;
-    }
-
     .fontuser select {
         height: 39px;
         width: 100%;
@@ -527,20 +520,7 @@ select, select .input-search::-ms-expand {
         box-shadow: none;
         display: none !important;
     }
-    select {
-        height: 60px;
-    }
 
-    form select {
-        padding: 10px 40px;
-        text-align: left;
-        border: 1px solid #d6d8db;
-        margin-top: 2%;
-        margin-bottom: 4%;
-        font-size: 14px;
-        width: 104%;
-        height: 90%;
-    }
 
     .form-button {
         background-color: #bc0001;
