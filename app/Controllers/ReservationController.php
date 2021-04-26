@@ -42,19 +42,18 @@ class ReservationController extends BaseController
         $sort_by = $this->request->getPost('sort_by');
 
         $sort_options = $this->getSortOptions($sort_by);
-        $reservation_count = $this->reservation_model->getReservationCount();
+        $reservation_count = 0;
         $reservations = $this->reservation_model->getReservations($sort_options['col'], $sort_options['dir'], $start, $limit);
         $result = array();
 
         if (!empty($reservations)) {
+            $reservation_count = $this->reservation_model->getReservationCount();
             foreach ($reservations as $reservation) {
                 $edit_function = 'editItem(' . $reservation->getIdReservation() . ')';
                 $edit_favorites = 'editFavorites(' . $reservation->getIdReservation() . ')';
-                $edit_rating = 'editRating(' . $reservation->getIdReservation() . ')';
                 $nestedData['id_reservation'] = $reservation->getIdReservation();
                 $nestedData['image_url'] = '<img class="td-internal-image image-column" src="' . base_url() . '/' . $reservation->getDestination()->getImageUrl() . '" height="50" width="50"/' . '>';
                 $nestedData['name'] = '<b>' . $reservation->getDestination()->getName() . '</b><br>' . date('j M Y h:i a', strtotime($reservation->getDate()->format('Y-m-d')));
-//                $nestedData['rating'] = '<span class="hidden-favorites"><b>' . 'Raiting' . '</b></span><br>' . $this->starRating($reservation->getDestination()->getRating());
                 $nestedData['rating'] = '<span class="hidden-favorites"><b>' . 'Rating' . '</b></span><br><input name="' . $reservation->getIdReservation() . '" value="' . $reservation->getRating() . '" type="number" id="rating" class="rating text-warning image-column" min=0 max=5 step=0.1 data-size="sm" data-stars="5" href="#" >';
                 $nestedData['favorite'] = $reservation->getFavorite() == 0 ? '<a style="cursor: pointer" class="table-a"><span class="hidden-favorites" onclick="' . $edit_favorites . '" style="color: grey">Add Favorites  </span><img class="td-internal-image favorite" onclick="' . $edit_favorites . '"src="/img/favorite-heart-icon-disabled.png" height="20" width="20"/><br /></a>' : '<a style="cursor: pointer" class="table-a"><span class="hidden-favorites" onclick="' . $edit_favorites . '" style="color: #212529">Add Favorites  </span><img class="td-internal-image favorite" onclick="' . $edit_favorites . '" src="/img/favorite-heart-icon-active.png" height="20" width="20"/><br /></a>';
                 $html = '<div class="table-secondary"><button type="button" onclick="' . $edit_function . '" class="btn rounded-0">EDIT</button></div>';

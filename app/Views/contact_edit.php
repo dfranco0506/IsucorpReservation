@@ -37,7 +37,8 @@
                             <option><?php echo lang('Validation.contact_type'); ?></option>
                             <?php
                             foreach ($contact_types as $contact_type) {
-                                echo '<option value="' . $contact_type->getIdContactType() . '" ' . 'selected = ' . old('contact_type', $contact->getContactType()->getName()) . '>' . $contact_type->getName() . '</option>';
+                                $selected = old('contact-type', $contact->getContactType()->getIdContactType()) == $contact_type->getIdContactType() ? 'selected' : '';
+                                echo '<option value="' . $contact_type->getIdContactType() . '" ' . $selected . '>' . $contact_type->getName() . '</option>';
                             }
                             ?>
                         </select>

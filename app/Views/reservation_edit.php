@@ -41,7 +41,8 @@
                             <option><?php echo lang('Validation.contact_type'); ?></option>
                             <?php
                             foreach ($contact_types as $contact_type) {
-                                echo '<option value="' . $contact_type->getIdContactType() . '" ' . 'selected = ' . old('contact_type', $reservations->getContact()->getContactType()->getName()) . '>' . $contact_type->getName() . '</option>';
+                                $selected = old('contact-type', $reservations->getContact()->getContactType()->getIdContactType()) == $contact_type->getIdContactType() ? 'selected' : '';
+                                echo '<option value="' . $contact_type->getIdContactType() . '" ' . $selected . '>' . $contact_type->getName() . '</option>';
                             }
                             ?>
                         </select>
@@ -73,7 +74,8 @@
                             <option value="0"><?php echo lang('Validation.destination'); ?></option>
                             <?php
                             foreach ($destinations as $destination) {
-                                echo '<option value="' . $destination->getIdDestination() . '" '. 'selected = '. old('contact_type',$reservations->getDestination()->getName() ).'>' . $destination->getName() . '</option>';
+                                $selected = old('destination', $reservations->getDestination()->getIdDestination()) == $destination->getIdDestination() ? 'selected' : '';
+                                echo '<option value="' . $destination->getIdDestination() . '" ' . $selected . '>' . $destination->getName() . '</option>';
 //                                echo '<option value="' . $destination->getIdDestination() . '" ' . ($destination->getIdDestination() == $reservations->getDestination()->getIdDestination()) ? 'selected' : '' . '>' . $destination->getName() . '</option>';
 
                             }
