@@ -38,7 +38,8 @@
     <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js" type="text/javascript"></script>
-
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="http://keith-wood.name/js/jquery.ui.datepicker.validation.js"></script>
     <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script type="text/javascript">
@@ -47,7 +48,6 @@
         //         fullPage: true,
         //     });
         // });
-
         function myAjax(method, path, url_to_redirect, data = "") {
             $.ajax({
                 type: method,

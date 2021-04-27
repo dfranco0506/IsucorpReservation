@@ -87,6 +87,20 @@ return [
     'confirm_delete_title'=>'Confirm Deletion',
     'confirm_delete_message' => 'Are you sure you want delete this contact?',
 
+    //form fields messages
+    'valid_name_format' => 'It must contain at least 3 letters.',
+    'valid_phone_format' => 'It must contain numbers and dash with the format 00-0000-0000.',
+    'valid_date_format' => 'It must contain a format d/m/yyyy.',
+    'valid_time_format' => 'It most contain a format hh:mm A.',
+
+    'required_name_view' => 'El campo Contact Name... es requerido',
+    'required_contact_type_view' => 'El campo Contact Type es requerido',
+    'required_contact_birthday_view' => 'El campo Birth Date es requerido',
+    'required_contact_phone_view' => 'El campo Phone Number es requerido',
+    'required_destination_view' => 'El campo Destination es requerido',
+    'required_reservation_date_view' => 'El campo Reservation Date es requerido',
+    'required_reservation_time_view' => 'El campo Reservation Time es requerido',
+
     //messages
     'success_create'=>'{object} created successfully.',
     'success_add_favorite'=>'Reservation added as favorite.',

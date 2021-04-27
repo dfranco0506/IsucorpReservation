@@ -81,8 +81,22 @@ return array(
     'reservation_time' => 'Hora de reservación',
     'sort_by' => 'Ordenar por',
     'confirm_delete_title'=>'Confirmar Eliminación',
-    'confirm_delete_title'=>'Confirmar Eliminación',
     'confirm_delete_message' => '¿Está seguro que desea eliminar el contacto?',
+
+    //form fields messages
+    'valid_name_format' => 'Debe contener al menos 3 letras',
+    'valid_phone_format' => 'Debe contener numeros y guiones, en el formato 00-0000-0000.',
+    'valid_date_format' => 'Debe tener un formato dd/mm/aaaa.',
+    'valid_time_format' => 'Debe contener un formato hh:mm A.',
+
+    'required_name_view' => 'El campo Nombre... es requerido',
+    'required_contact_type_view' => 'El campo Tipo de contacto es requerido',
+    'required_contact_birthday_view' => 'El campo Fecha de nacimiento es requerido',
+    'required_contact_phone_view' => 'El campo Teléfono es requerido',
+    'required_destination_view' => 'El campo Destino es requerido',
+    'required_reservation_date_view' => 'El campo Fecha de reservación es requerido',
+    'required_reservation_time_view' => 'El campo Hora de reservación es requerido',
+
     //messages
     'success_create' => '{object} creado(a) exitosamente.',
     'success_add_favorite' => 'La reservación se ha creado como favorita.',
