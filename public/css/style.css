@@ -313,7 +313,7 @@ label.valid {
     color: green !important; // !important added
 }
 
-input.error.fail-alert {
+input.error{
     border: 2px solid red;
 }
 

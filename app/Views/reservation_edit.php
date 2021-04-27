@@ -22,7 +22,7 @@
     </section>
     <div class="container">
         <?= $validation->listErrors('my_list') ?>
-        <form method="post" name="reservation_form"
+        <form method="post" name="reservation_form" id="reservation_edit_form"
               action="<?= site_url('/reservation/update/' . $reservations->getIdReservation()) ?>">
             <div class="row other">
                 <div class="col-lg-3 col-sm-4 col-md-4">
@@ -90,14 +90,18 @@
                                placeholder="<?php echo lang('Validation.reservation_date'); ?>" name="reservation_date"
                                required data-date-format="dd/mm/yyyy"
                                value="<?= old('reservation_date', $reservation_date) ?>">
+                        <p>
+                            <span class="emsgreserdate"><?php echo lang('Validation.valid_date_format'); ?></span>
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-4 col-md-4">
                     <div class="input-icons">
-                        <i class="fa fa-clock fa-2x icon"></i>
+                        <i class="fa fa-calendar fa-2x icon"></i>
                         <input class="timepicker input-field" class="timepicker" type="text" autocomplete="off"
                                placeholder="<?php echo lang('Validation.reservation_time'); ?>" name="reservation_time"
                                id="reservation_time" required value="<?= old('reservation_time', $reservation_time) ?>">
+                        <p><span class="emsgtime"><?php echo lang('Validation.valid_time_format'); ?></span></p>
                     </div>
                 </div>
             </div>
@@ -124,15 +128,23 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('input.timepicker').timepicker({});
+            $('.emsgreserdate').hide();
+            $('.emsgtime').hide();
         });
-        $(function () {
-            $("#reservation_date").datepicker({
-                dateFormat: 'dd/mm/yy',
-                changeYear: true,
-                changeMonth: true,
-                minDate: new Date(),
-                maxDate: '+2Y'
-            });
+        $("#reservation_date").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeYear: true,
+            changeMonth: true,
+            minDate: new Date(),
+            maxDate: '+2Y'
+        }).on('keypress keydown keyup', function () {
+            var $regexdate = /^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/;
+            if ($(this).val().match($regexdate)&& isValidDate($(this).val())) {
+                $('.emsgreserdate').hide();
+            } else {
+                $('.emsgreserdate').show();
+            }
+            ;  // triggers the validation test
         });
 
         $('.timepicker').timepicker({
@@ -141,6 +153,36 @@
             dynamic: false,
             dropdown: true,
             scrollbar: true
+        }).on('keypress keydown keyup', function () {
+            var $regexdate = /^(0?[1-9]|1[012])(:[0-5]\d) [AP][M]$/;
+            if (!$(this).val().match($regexdate)) {
+                $('.emsgtime').show();
+            } else {
+                $('.emsgtime').hide();
+            }
+            ;  // triggers the validation test
+        });
+
+        function isValidDate(s) {
+            var bits = s.split('/');
+            var d = new Date(bits[2], bits[0] - 1, bits[1]);
+            return d && (d.getMonth() + 1) == bits[0] && d.getDate() == Number(bits[1]);
+        }
+
+        $("#reservation_edit_form").validate({
+            errorContainer: ".error",
+            success: function(label) {
+                label.removeClass("error").addClass("check");
+            },
+            rules: {
+                reservation_date: {required: true},
+                reservation_time: {required: true},
+            },
+            messages: {
+                reservation_date: "<?php echo lang('Validation.required_reservation_date_view'); ?>",
+                reservation_time: "<?php echo lang('Validation.required_reservation_time_view'); ?>",
+            },
+
         });
     </script>
 

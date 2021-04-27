@@ -37,7 +37,7 @@
                     <div class="input-icons">
                         <i class="fa fa-sort-amount-desc fa-2x icon"></i>
                         <select class="input-field" id="contact_type" name="contact_type" required>
-                            <option><?php echo lang('Validation.contact_type'); ?></option>
+<!--                            <option>--><?php //echo lang('Validation.contact_type'); ?><!--</option>-->
                             <?php
                             foreach ($contact_types as $contact_type) {
                                 echo '<option value="' . $contact_type->getIdContactType() . '" ' . $contact_type->getIdContactType() . '>' . $contact_type->getName() . '</option>';
@@ -74,7 +74,7 @@
                     <div class="input-icons">
                         <i class="fa fa-sort-amount-desc fa-2x icon"></i>
                         <select class="input-field" id="destination" name="destination" required>
-                            <option value="0"><?php echo lang('Validation.destination'); ?></option>
+<!--                            <option value="0">--><?php //echo lang('Validation.destination'); ?><!--</option>-->
                             <?php
                             foreach ($destinations as $destination) {
                                 echo '<option value="' . $destination->getIdDestination() . '" ' . $destination->getIdDestination() . '>' . $destination->getNAme() . '</option>';
