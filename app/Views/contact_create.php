@@ -87,7 +87,7 @@
             $('.emsgbirthdate').hide();
         });
         $('#contact_name').on('input', function () {
-            this.value = this.value.replace(/[^a-zA-ZÀ-ÿ]/, '');
+            this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/, '');
         }).on('keypress keydown keyup', function () {
             var $regexname = /^[a-zA-ZÀ-ÿ\s]{3,40}$/;
             if (!$(this).val().match($regexname)) {
